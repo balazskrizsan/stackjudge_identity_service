@@ -46,9 +46,6 @@ namespace Stackjudge_Identity_Server
                 app.UseHsts();
             }
 
-            Console.WriteLine("--------------------------------------");
-            Console.WriteLine("m2m.client.secret".Sha256());
-
             app.UseIdentityServer();
 
             app.UseHttpsRedirection();
