@@ -8,14 +8,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4cf20176-6cf7-4ba7-a95c-e2b5bd6fa861" name="Changes" comment="" />
+    <list default="true" id="4cf20176-6cf7-4ba7-a95c-e2b5bd6fa861" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IDS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IDS/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Config.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Config.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Startup.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -103,6 +108,7 @@
       <updated>1656365179082</updated>
       <workItem from="1656365183913" duration="45931000" />
       <workItem from="1656963879498" duration="68000" />
+      <workItem from="1656963969933" duration="11346000" />
     </task>
     <servers />
   </component>
@@ -114,25 +120,6 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Stackjudge Identity Server/Program.cs</url>
-          <line>16</line>
-          <properties documentPath="W:\_stackjudge\stackjudge_identity_service2\IDS\Stackjudge Identity Server\Program.cs" initialLine="16" containingFunctionPresentation="method 'CreateHostBuilder'">
-            <startOffsets>
-              <option value="427" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1451" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
