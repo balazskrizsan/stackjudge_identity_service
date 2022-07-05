@@ -86,15 +86,23 @@ public static class Config
         new ApiScope("sj.aws.ses.send_mail"),
     };
 
-    // public static IEnumerable<ApiResource> ApiResources => new[]
-    // {
-    //     new ApiResource("weatherapi")
-    //     {
-    //         Scopes = new List<string> { "sj.aws.ec2.upload_company_logo" },
-    //         ApiSecrets = new List<Secret> { new("ScopeSecret".Sha256()) },
-    //         UserClaims = new List<string> { "role" }
-    //     }
-    // };
+    public static IEnumerable<ApiResource> ApiResources => new[]
+    {
+        new ApiResource("js_aws")
+        {
+            Scopes = new List<string> 
+            {
+                "sj",
+                "sj.aws",
+                "sj.aws.ec2",
+                "sj.aws.ec2.upload_company_logo",
+                "sj.aws.ec2.upload_company_map",
+                "sj.aws.ses",
+                "sj.aws.ses.send_mail"
+            },
+            ApiSecrets = new List<Secret> { new("js_aws_scopes".Sha256()) },
+        }
+    };
 
     public static IEnumerable<Client> Clients => new[]
     {

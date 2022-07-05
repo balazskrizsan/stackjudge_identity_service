@@ -29,7 +29,7 @@ namespace Stackjudge_Identity_Server
                         })
                         .AddTestUsers(Config.Users)
                         .AddInMemoryClients(Config.Clients)
-                        // .AddInMemoryApiResources(Config.ApiResources)
+                        .AddInMemoryApiResources(Config.ApiResources)
                         .AddInMemoryApiScopes(Config.ApiScopes)
                         .AddInMemoryIdentityResources(Config.IdentityResources);
                 })
