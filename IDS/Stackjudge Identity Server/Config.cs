@@ -10,6 +10,8 @@ namespace Stackjudge_Identity_Server;
 
 public static class Config
 {
+    public const int LIFETIME_5MINS = 3600;
+
     public static List<TestUser> Users
     {
         get
@@ -106,7 +108,6 @@ public static class Config
 
     public static IEnumerable<Client> Clients => new[]
     {
-        // m2m client credentials flow client
         new Client
         {
             ClientId = "sj.aws",
@@ -114,6 +115,7 @@ public static class Config
             AllowAccessTokensViaBrowser = false,
             AllowedGrantTypes = GrantTypes.ClientCredentials,
             ClientSecrets = { new Secret("m2m.client.secret".Sha256()) },
+            AccessTokenLifetime = LIFETIME_5MINS,
             AllowedScopes =
             {
                 "sj",
