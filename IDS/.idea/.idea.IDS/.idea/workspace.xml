@@ -9,10 +9,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4cf20176-6cf7-4ba7-a95c-e2b5bd6fa861" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/sjdev.pfx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.IDS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IDS/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Config.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Config.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Data/WeatherForecast.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Data/WeatherForecastService.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/Stackjudge Identity Server/appsettings.Development.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,12 +36,18 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ed5e4d8ea19d179692985836fe39e9129251d6cb648a8d373b359b551878/GrantType.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/dcbe7273c754c6ab433c3bc436831982a6ab47e47f814755e75cd02a6b5337/IdentityServerApplicationBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://W:/_stackjudge/stackjudge_identity_service2/IDS/Stackjudge Identity Server/Config.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/70dbbd8de9f5dcbb919eae57cd65289fb1bc5451835f595c45d6ff48f819a8/MvcServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8e0bb3e15da1458a975c720c2d6f408a1205e8/fd/100cb533/MSBuild.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3b231a15c1a5b7259434436e9919d320c7d9e4db26682488e2a95d8d4902caf/Secret.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://W:/_stackjudge/stackjudge_identity_service2/IDS/Stackjudge Identity Server/Config.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://W:/_stackjudge/stackjudge_identity_service2/IDS/Stackjudge Identity Server/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://W:/_stackjudge/stackjudge_identity_service2/IDS/Stackjudge Identity Server/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://W:/_stackjudge/stackjudge_identity_service2/IDS/Stackjudge Identity Server/Config.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/dcbe7273c754c6ab433c3bc436831982a6ab47e47f814755e75cd02a6b5337/IdentityServerApplicationBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/264cdbfbdb7c6a9ddc794d948824e97d8f7c0ce1a275b6ed78cde41f286ff8/HostEnvironmentEnvExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/28f84ddc9d119dce67851dcbcf94b84326514a20e6488df48ca286dfe9a43e9d/UseMiddlewareExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://W:/_stackjudge/stackjudge_identity_service2/IDS/Stackjudge Identity Server/Startup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b61bdb830c1925ea5cdbbee15abbf54fa1d55633e14127b8caa28fc3be848/Environments.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c3f9887cdee185ed1818f2b8ded1a86e2b085f8cca4413ad9c54f21b924ff1/GrantTypes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7df79d391341c42ebeacdf1bc125fd4edc608cf4f2c378311216236b41d3e7/Client.cs" root0="SKIP_HIGHLIGHTING" />
@@ -108,8 +118,37 @@
       <updated>1656365179082</updated>
       <workItem from="1656365183913" duration="45931000" />
       <workItem from="1656963879498" duration="68000" />
-      <workItem from="1656963969933" duration="11346000" />
+      <workItem from="1656963969933" duration="31587000" />
     </task>
+    <task id="LOCAL-00001" summary="CS">
+      <created>1657028601798</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1657028601798</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Resource added for token validation">
+      <created>1657028694646</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1657028694646</updated>
+    </task>
+    <task id="LOCAL-00003" summary="js.aws token lifetime change">
+      <created>1657028723693</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1657028723693</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Idea config changes">
+      <created>1657028773162</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1657028773162</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,6 +159,12 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="CS" />
+    <MESSAGE value="Resource added for token validation" />
+    <MESSAGE value="js.aws token lifetime change" />
+    <MESSAGE value="Idea config change" />
+    <MESSAGE value="Idea config changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Idea config changes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
