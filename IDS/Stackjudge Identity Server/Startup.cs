@@ -1,16 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Duende.IdentityServer.Models;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Stackjudge_Identity_Server.Data;
 
 namespace Stackjudge_Identity_Server
 {
@@ -29,7 +22,6 @@ namespace Stackjudge_Identity_Server
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +37,18 @@ namespace Stackjudge_Identity_Server
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            // Hack until com.auth0.jwk.UrlJwkProvider.WELL_KNOWN_JWKS_PATH hardcoded path won't be load from config
+            app.Use(async (context,next) =>
+            {
+                var url = context.Request.Path.Value;
+
+                if (url.Contains("/.well-known/jwks.json")) {
+                    context.Request.Path = "/.well-known/openid-configuration/jwks";
+                }
+
+                await next();
+            });
 
             app.UseIdentityServer();
 
