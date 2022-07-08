@@ -92,7 +92,7 @@ public static class Config
     {
         new ApiResource("js_aws")
         {
-            Scopes = new List<string> 
+            Scopes = new List<string>
             {
                 "sj",
                 "sj.aws",
