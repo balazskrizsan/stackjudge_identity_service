@@ -1,11 +1,18 @@
+using System.Reflection;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Stackjudge_Identity_Server.Data;
 
 namespace Stackjudge_Identity_Server
 {
     public class Program
     {
+        private static string CONNECTION_STRING =
+            "Host=localhost;Database=stackjudge;Port=54322;Username=admin;Password=admin_pass;";
+
         public static void Main(string[] args)
         {
             CreateHostBuilder(args)
@@ -18,16 +25,42 @@ namespace Stackjudge_Identity_Server
                 .CreateDefaultBuilder(args)
                 .ConfigureServices((_, services) =>
                 {
+                    var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+
+                    services.AddDbContext<AppDbContext>(options => { options.UseNpgsql(CONNECTION_STRING); });
+
+                    services.AddIdentity<IdentityUser, IdentityRole>()
+                        .AddEntityFrameworkStores<AppDbContext>()
+                        .AddDefaultTokenProviders();
+
+                    services.AddAuthentication().AddFacebook(facebookOptions =>
+                    {
+                        facebookOptions.AppId = "6256044054421319";
+                        facebookOptions.AppSecret = "02d0121396bc2c5f2a3e5713a620a7c2";
+                    });
+
                     services.AddIdentityServer(options =>
                         {
                             options.Events.RaiseErrorEvents = true;
                             options.Events.RaiseInformationEvents = true;
                             options.Events.RaiseFailureEvents = true;
                             options.Events.RaiseSuccessEvents = true;
-
                             options.EmitStaticAudienceClaim = true;
                         })
-                        .AddTestUsers(Config.Users)
+                        .AddAspNetIdentity<IdentityUser>()
+                        .AddConfigurationStore(options =>
+                        {
+                            options.ConfigureDbContext = b => b.UseNpgsql(
+                                CONNECTION_STRING,
+                                sql => sql.MigrationsAssembly(migrationsAssembly)
+                            );
+                        })
+                        .AddOperationalStore(options =>
+                        {
+                            options.ConfigureDbContext = b => b.UseNpgsql(CONNECTION_STRING,
+                                sql => sql.MigrationsAssembly(migrationsAssembly));
+                        })
+                        // .AddTestUsers(Config.Users)
                         .AddInMemoryClients(Config.Clients)
                         .AddInMemoryApiResources(Config.ApiResources)
                         .AddInMemoryApiScopes(Config.ApiScopes)

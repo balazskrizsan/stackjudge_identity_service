@@ -9,14 +9,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4cf20176-6cf7-4ba7-a95c-e2b5bd6fa861" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/sjdev.pfx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Controllers/AuthController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Controllers/ExternalRegisterViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Controllers/HomeController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Controllers/LoginViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Controllers/RegisterViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Data/AppConfigurationDbContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Data/AppDbContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Data/AppPersistedGrantDbContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Data/Migrations/App/20220807164122_InitialIdsServerMigration.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Data/Migrations/App/20220807164122_InitialIdsServerMigration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Data/Migrations/App/AppDbContextModelSnapshot.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Data/Migrations/IdentityServer/ConfigurationDb/20220807145100_InitialIdentityServerConfigurationDbMigration.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Data/Migrations/IdentityServer/ConfigurationDb/20220807145100_InitialIdentityServerConfigurationDbMigration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Data/Migrations/IdentityServer/ConfigurationDb/ConfigurationDbContextModelSnapshot.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Data/Migrations/IdentityServer/PersistedGrantDb/20220807144842_InitialIdentityServerPersistedGrantDbMigration.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Data/Migrations/IdentityServer/PersistedGrantDb/20220807144842_InitialIdentityServerPersistedGrantDbMigration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Data/Migrations/IdentityServer/PersistedGrantDb/PersistedGrantDbContextModelSnapshot.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Views/Auth/ExternalRegister.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Views/Auth/ExternalRegister.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Views/Auth/Index.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Views/Auth/Index.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Views/Auth/Login.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Views/Auth/Login.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Views/Auth/Register.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Views/Auth/Register.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Views/Home/Index.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Views/Home/Index.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Views/_ViewImports.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Views/_ViewImports.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Stackjudge Identity Server/migration.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.IDS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IDS/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/App.razor" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Config.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Config.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Data/WeatherForecast.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Data/WeatherForecastService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Pages/Error.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Pages/Error.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Pages/Index.razor" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Pages/_Host.cshtml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Shared/MainLayout.razor" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Shared/MainLayout.razor.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Shared/NavMenu.razor" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Shared/NavMenu.razor.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Shared/SurveyPrompt.razor" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Stackjudge Identity Server.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Stackjudge Identity Server.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Stackjudge Identity Server/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/Stackjudge Identity Server/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/_Imports.razor" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/wwwroot/css/bootstrap/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/wwwroot/css/bootstrap/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/wwwroot/css/open-iconic/FONT-LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/wwwroot/css/open-iconic/ICON-LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/wwwroot/css/open-iconic/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/wwwroot/css/open-iconic/font/fonts/open-iconic.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/wwwroot/css/open-iconic/font/fonts/open-iconic.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/wwwroot/css/open-iconic/font/fonts/open-iconic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/wwwroot/css/open-iconic/font/fonts/open-iconic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/wwwroot/css/open-iconic/font/fonts/open-iconic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/wwwroot/css/site.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stackjudge Identity Server/wwwroot/favicon.ico" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,21 +87,28 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ed5e4d8ea19d179692985836fe39e9129251d6cb648a8d373b359b551878/GrantType.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://W:/_stackjudge/stackjudge_identity_service2/IDS/Stackjudge Identity Server/Config.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/70dbbd8de9f5dcbb919eae57cd65289fb1bc5451835f595c45d6ff48f819a8/MvcServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/faf4a4b37056302738a46865827c3d2d3b6b1b977603a3932b0cd749921118/Controller.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8e0bb3e15da1458a975c720c2d6f408a1205e8/fd/100cb533/MSBuild.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3b231a15c1a5b7259434436e9919d320c7d9e4db26682488e2a95d8d4902caf/Secret.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://W:/_stackjudge/stackjudge_identity_service2/IDS/Stackjudge Identity Server/Config.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://W:/_stackjudge/stackjudge_identity_service2/IDS/Stackjudge Identity Server/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://W:/_stackjudge/stackjudge_identity_service2/IDS/Stackjudge Identity Server/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://W:/_stackjudge/stackjudge_identity_service2/IDS/Stackjudge Identity Server/Config.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/dcbe7273c754c6ab433c3bc436831982a6ab47e47f814755e75cd02a6b5337/IdentityServerApplicationBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/264cdbfbdb7c6a9ddc794d948824e97d8f7c0ce1a275b6ed78cde41f286ff8/HostEnvironmentEnvExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/28f84ddc9d119dce67851dcbcf94b84326514a20e6488df48ca286dfe9a43e9d/UseMiddlewareExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/41cc2659897ded1c75869e25f414a6dce3380d39586a3b5a93cc7ebd6ce5/SignInManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/70dbbd8de9f5dcbb919eae57cd65289fb1bc5451835f595c45d6ff48f819a8/MvcServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1f6f390bc246f43f64a19835b0d7e69c2d8f7cd17815f5fcbb145b665bab8/IActionResult.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3abf5d0462cbdbcc93a77b1812180894425d0ef6544aa6a38653967eff1/ConfigurationDbContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://W:/_stackjudge/stackjudge_identity_service2/IDS/Stackjudge Identity Server/Startup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/dcbe7273c754c6ab433c3bc436831982a6ab47e47f814755e75cd02a6b5337/IdentityServerApplicationBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/22ecaee444ea579d35fbedacd8165d1923a96143d4f5353524c6a192206b2dd7/HttpGetAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/264cdbfbdb7c6a9ddc794d948824e97d8f7c0ce1a275b6ed78cde41f286ff8/HostEnvironmentEnvExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Stackjudge Identity Server/Config.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/28f84ddc9d119dce67851dcbcf94b84326514a20e6488df48ca286dfe9a43e9d/UseMiddlewareExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/93bf8ca51564b3532dce6442f8ec6d3856e11622b484427b6e965ca60aba4b1/IdentityDbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Stackjudge Identity Server/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b61bdb830c1925ea5cdbbee15abbf54fa1d55633e14127b8caa28fc3be848/Environments.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d663bd3314b67442783c8cafcfbdafce1fe8949528a5173c8c715242eb3c1/TimeZone.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c3f9887cdee185ed1818f2b8ded1a86e2b085f8cca4413ad9c54f21b924ff1/GrantTypes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f0e1655fbd1a97c5b397cf35d1b584748da0421eb2e031b7f5c5166a6b271/NpgsqlDbContextOptionsBuilderExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7df79d391341c42ebeacdf1bc125fd4edc608cf4f2c378311216236b41d3e7/Client.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c6354d55b4c1fdbe22621ea48185af62cdeadcf4f28d9ed0890dfdf36c6/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Stackjudge Identity Server/Data/AppDbContext.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -62,14 +120,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="SolutionBuilderGeneralOptionsPageId" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Stackjudge Identity Server">
@@ -118,7 +173,21 @@
       <updated>1656365179082</updated>
       <workItem from="1656365183913" duration="45931000" />
       <workItem from="1656963879498" duration="68000" />
-      <workItem from="1656963969933" duration="31587000" />
+      <workItem from="1656963969933" duration="41653000" />
+      <workItem from="1657809047961" duration="3110000" />
+      <workItem from="1658142409632" duration="1975000" />
+      <workItem from="1658226550723" duration="1874000" />
+      <workItem from="1658336144393" duration="1200000" />
+      <workItem from="1658485831078" duration="80644000" />
+      <workItem from="1659733399215" duration="8671000" />
+      <workItem from="1659788826215" duration="15986000" />
+      <workItem from="1659826768320" duration="258000" />
+      <workItem from="1659827047920" duration="294000" />
+      <workItem from="1659827470919" duration="172000" />
+      <workItem from="1659827753376" duration="35000" />
+      <workItem from="1659827798204" duration="57000" />
+      <workItem from="1659831124040" duration="29431000" />
+      <workItem from="1661807003199" duration="10031000" />
     </task>
     <task id="LOCAL-00001" summary="CS">
       <created>1657028601798</created>
@@ -148,7 +217,42 @@
       <option name="project" value="LOCAL" />
       <updated>1657028773162</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Pfx added to local dev">
+      <created>1657283927255</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1657283927255</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Default generated files removed">
+      <created>1657284013231</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1657284013231</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Temp redirect for com.auth0.jwk">
+      <created>1657284053777</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1657284053777</updated>
+    </task>
+    <task id="LOCAL-00008" summary="CS">
+      <created>1657284063643</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1657284063643</updated>
+    </task>
+    <task id="LOCAL-00009" summary="workspace.xml update">
+      <created>1657284076999</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1657284076999</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,12 +263,100 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="CS" />
     <MESSAGE value="Resource added for token validation" />
     <MESSAGE value="js.aws token lifetime change" />
     <MESSAGE value="Idea config change" />
     <MESSAGE value="Idea config changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Idea config changes" />
+    <MESSAGE value="Pfx added to local dev" />
+    <MESSAGE value="Default generated files removed" />
+    <MESSAGE value="Temp redirect for com.auth0.jwk" />
+    <MESSAGE value="CS" />
+    <MESSAGE value="workspace.xml update" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace.xml update" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Stackjudge Identity Server/Controllers/AuthController.cs</url>
+          <line>156</line>
+          <properties documentPath="W:\_stackjudge\stackjudge_identity_service2\IDS\Stackjudge Identity Server\Controllers\AuthController.cs" initialLine="156" containingFunctionPresentation="method 'ExternalRegister'">
+            <startOffsets>
+              <option value="4414" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4444" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Stackjudge Identity Server/Controllers/AuthController.cs</url>
+          <line>75</line>
+          <properties documentPath="W:\_stackjudge\stackjudge_identity_service2\IDS\Stackjudge Identity Server\Controllers\AuthController.cs" initialLine="75" containingFunctionPresentation="method 'Register'">
+            <startOffsets>
+              <option value="2145" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2206" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Stackjudge Identity Server/Controllers/AuthController.cs</url>
+          <line>59</line>
+          <properties documentPath="W:\_stackjudge\stackjudge_identity_service2\IDS\Stackjudge Identity Server\Controllers\AuthController.cs" initialLine="59" containingFunctionPresentation="method 'Login'">
+            <startOffsets>
+              <option value="1788" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1882" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Stackjudge Identity Server/Controllers/AuthController.cs</url>
+          <line>43</line>
+          <properties documentPath="W:\_stackjudge\stackjudge_identity_service2\IDS\Stackjudge Identity Server\Controllers\AuthController.cs" initialLine="43" containingFunctionPresentation="method 'Login'">
+            <startOffsets>
+              <option value="1315" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1400" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Stackjudge Identity Server/Controllers/AuthController.cs</url>
+          <line>28</line>
+          <properties documentPath="W:\_stackjudge\stackjudge_identity_service2\IDS\Stackjudge Identity Server\Controllers\AuthController.cs" initialLine="28" containingFunctionPresentation="method 'Logout'">
+            <startOffsets>
+              <option value="885" />
+            </startOffsets>
+            <endOffsets>
+              <option value="921" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Stackjudge Identity Server/Controllers/AuthController.cs</url>
+          <line>133</line>
+          <properties documentPath="W:\_stackjudge\stackjudge_identity_service2\IDS\Stackjudge Identity Server\Controllers\AuthController.cs" initialLine="133" containingFunctionPresentation="method 'ExternalRegister'">
+            <startOffsets>
+              <option value="3860" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3920" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
