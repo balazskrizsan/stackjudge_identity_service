@@ -86,11 +86,13 @@ public static class Config
         new ApiScope("sj.aws.ec2.upload_company_map"),
         new ApiScope("sj.aws.ses"),
         new ApiScope("sj.aws.ses.send_mail"),
+        new ApiScope("sj.notification"),
+        new ApiScope("sj.notification.send_push"),
     };
 
     public static IEnumerable<ApiResource> ApiResources => new[]
     {
-        new ApiResource("js_aws")
+        new ApiResource("sj_aws")
         {
             Scopes = new List<string>
             {
@@ -100,7 +102,9 @@ public static class Config
                 "sj.aws.ec2.upload_company_logo",
                 "sj.aws.ec2.upload_company_map",
                 "sj.aws.ses",
-                "sj.aws.ses.send_mail"
+                "sj.aws.ses.send_mail",
+                "sj.notification",
+                "sj.notification.send_push",
             },
             ApiSecrets = new List<Secret> { new("js_aws_scopes".Sha256()) },
         }
@@ -114,8 +118,8 @@ public static class Config
             ClientName = "Machine2Machine/Sj/Aws",
             AllowAccessTokensViaBrowser = false,
             AllowedGrantTypes = GrantTypes.ClientCredentials,
-            ClientSecrets = { new Secret("m2m.client.secret".Sha256()) },
-            AccessTokenLifetime = LIFETIME_5MINS,
+            ClientSecrets = { new Secret("sj.aws.client.secret".Sha256()) },
+            AccessTokenLifetime = LIFETIME_1HOUR,
             AllowedScopes =
             {
                 "sj",
