@@ -1,4 +1,6 @@
+using System.IO;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +13,7 @@ namespace Stackjudge_Identity_Server
     public class Program
     {
         private static string CONNECTION_STRING =
-            "Host=localhost;Database=stackjudge;Port=54322;Username=admin;Password=admin_pass;";
+            "Host=192.168.33.10;Database=stackjudge;Port=54322;Username=admin;Password=admin_pass;";
 
         public static void Main(string[] args)
         {
