@@ -10,7 +10,12 @@ namespace Stackjudge_Identity_Server;
 
 public static class Config
 {
-    public const int LIFETIME_5MINS = 3600;
+    public const int LIFETIME_10SEC = 10;
+    public const int LIFETIME_1MIN = 60;
+    public const int LIFETIME_5MINS = 300;
+    public const int LIFETIME_1HOUR = 3600;
+    public const int LIFETIME_2HOURS = 7200;
+    public const int LIFETIME_4HOURS = 14400;
 
     public static List<TestUser> Users
     {
