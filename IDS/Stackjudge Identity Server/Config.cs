@@ -111,7 +111,7 @@ public static class Config
                 "sj.notification",
                 "sj.notification.send_push",
             },
-            ApiSecrets = new List<Secret> { new("js_aws_scopes".Sha256()) },
+            ApiSecrets = new List<Secret> { new("sj_aws_scopes".Sha256()) },
         }
     };
 
@@ -133,7 +133,22 @@ public static class Config
                 "sj.aws.ec2.upload_company_logo",
                 "sj.aws.ec2.upload_company_map",
                 "sj.aws.ses",
-                "sj.aws.ses.send_mail"
+                "sj.aws.ses.send_mail",
+            },
+        },
+        new Client
+        {
+            ClientId = "sj.notification",
+            ClientName = "Machine2Machine/Sj/Aws",
+            AllowAccessTokensViaBrowser = false,
+            AllowedGrantTypes = GrantTypes.ClientCredentials,
+            ClientSecrets = { new Secret("sj.notification.client.secret".Sha256()) },
+            AccessTokenLifetime = LIFETIME_1HOUR,
+            AllowedScopes =
+            {
+                "sj",
+                "sj.notification",
+                "sj.notification.send_push",
             },
         },
     };
