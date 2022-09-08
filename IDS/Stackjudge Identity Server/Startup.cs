@@ -1,13 +1,8 @@
-using System.Linq;
-using Duende.IdentityServer.EntityFramework.DbContexts;
-using Duende.IdentityServer.EntityFramework.Mappers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Stackjudge_Identity_Server.Data;
 
 namespace Stackjudge_Identity_Server;
 
@@ -102,7 +97,7 @@ public class Startup
         //
         //     if (!context.IdentityResources.Any())
         //     {
-        //         foreach (var resource in Config.Clients)
+        //         foreach (var resource in Config.IdentityResources)
         //         {
         //             context.IdentityResources.Add(resource.ToEntity());
         //         }
