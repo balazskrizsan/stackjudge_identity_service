@@ -85,6 +85,7 @@ public static class Config
     public static IEnumerable<ApiScope> ApiScopes => new[]
     {
         new ApiScope("sj"),
+        new ApiScope("sj.frontend"),
         new ApiScope("sj.aws"),
         new ApiScope("sj.aws.ec2"),
         new ApiScope("sj.aws.ec2.upload_company_logo"),
@@ -110,6 +111,16 @@ public static class Config
                 "sj.aws.ses.send_mail",
                 "sj.notification",
                 "sj.notification.send_push",
+            },
+            ApiSecrets = new List<Secret> { new("sj_aws_scopes".Sha256()) },
+        },
+        new ApiResource("sj.resource.frontend")
+        {
+            Scopes = new List<string>
+            {
+                "sj",
+                "sj.frontend",
+                "openid",
             },
             ApiSecrets = new List<Secret> { new("sj_aws_scopes".Sha256()) },
         }
@@ -149,6 +160,26 @@ public static class Config
                 "sj",
                 "sj.notification",
                 "sj.notification.send_push",
+            },
+        },
+        new Client
+        {
+            ClientId = "sj.frontend",
+            ClientName = "Code/Sj/Frontend",
+            AllowAccessTokensViaBrowser = true,
+            AllowedGrantTypes = GrantTypes.Code,
+            RequireClientSecret = false,
+            RequirePkce = false, // go true
+            RedirectUris = { "https://localhost:4200" },
+            PostLogoutRedirectUris = {},
+            AllowedCorsOrigins = { "https://localhost:4200" },
+            RequireConsent = false,
+            AccessTokenLifetime = LIFETIME_1HOUR,
+            AllowedScopes =
+            {
+                "openid",
+                "sj",
+                "sj.frontend",
             },
         },
     };
