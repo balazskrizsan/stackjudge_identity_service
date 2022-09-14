@@ -98,7 +98,7 @@ public static class Config
 
     public static IEnumerable<ApiResource> ApiResources => new[]
     {
-        new ApiResource("sj_aws")
+        new ApiResource("sj.resource.aws")
         {
             Scopes = new List<string>
             {
@@ -109,8 +109,6 @@ public static class Config
                 "sj.aws.ec2.upload_company_map",
                 "sj.aws.ses",
                 "sj.aws.ses.send_mail",
-                "sj.notification",
-                "sj.notification.send_push",
             },
             ApiSecrets = new List<Secret> { new("sj_aws_scopes".Sha256()) },
         },
