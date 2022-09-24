@@ -179,6 +179,8 @@ public static class Config
                 "sj",
                 "sj.frontend",
             },
+            EnableLocalLogin = false,
+            IdentityProviderRestrictions = { "Facebook" },
         },
     };
 }
