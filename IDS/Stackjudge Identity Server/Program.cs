@@ -1,12 +1,11 @@
-using System.IO;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Stackjudge_Identity_Server.Data;
+using Stackjudge_Identity_Server.Services;
 
 namespace Stackjudge_Identity_Server
 {
@@ -66,7 +65,8 @@ namespace Stackjudge_Identity_Server
                         .AddInMemoryClients(Config.Clients)
                         .AddInMemoryApiResources(Config.ApiResources)
                         .AddInMemoryApiScopes(Config.ApiScopes)
-                        .AddInMemoryIdentityResources(Config.IdentityResources);
+                        .AddInMemoryIdentityResources(Config.IdentityResources)
+                        .AddProfileService<ProfileService<IdentityUser>>();
                 })
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }
