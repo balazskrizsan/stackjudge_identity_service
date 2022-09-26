@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Stackjudge_Identity_Server.Controllers;
 
-public class AuthController : Controller
+public class AccountController : Controller
 {
     private readonly SignInManager<IdentityUser> signInManager;
     private readonly UserManager<IdentityUser> userManager;
     private readonly IIdentityServerInteractionService interactionService;
 
-    public AuthController(
+    public AccountController(
         UserManager<IdentityUser> userManager,
         SignInManager<IdentityUser> signInManager,
         IIdentityServerInteractionService interactionService
@@ -99,7 +99,7 @@ public class AuthController : Controller
 
     public async Task<IActionResult> ExternalLogin(string provider, string returnUrl)
     {
-        var redirectUri = Url.Action(nameof(ExternalLoginCallback), "Auth", new { returnUrl });
+        var redirectUri = Url.Action(nameof(ExternalLoginCallback), "Account", new { returnUrl });
         var properties = signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUri);
 
         return Challenge(properties, provider);
