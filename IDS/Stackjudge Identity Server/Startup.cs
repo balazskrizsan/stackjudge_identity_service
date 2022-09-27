@@ -42,17 +42,6 @@ public class Startup
         app.UseCors(x => x.WithOrigins("https://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials());
 
         // Hack until com.auth0.jwk.UrlJwkProvider.WELL_KNOWN_JWKS_PATH hardcoded path won't be load from config
-        app.Use(async (context, next) =>
-        {
-            var url = context.Request.Path.Value;
-
-            if (url.Contains("/.well-known/jwks.json"))
-            {
-                context.Request.Path = "/.well-known/openid-configuration/jwks";
-            }
-
-            await next();
-        });
 
         app.UseIdentityServer();
 
