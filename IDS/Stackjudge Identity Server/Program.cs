@@ -33,6 +33,7 @@ namespace Stackjudge_Identity_Server
                     services.AddIdentity<IdentityUser, IdentityRole>()
                         .AddEntityFrameworkStores<AppDbContext>()
                         .AddDefaultTokenProviders();
+                    
 
                     services.AddAuthentication().AddFacebook(facebookOptions =>
                     {
