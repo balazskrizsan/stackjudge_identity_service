@@ -38,6 +38,25 @@ namespace Stackjudge_Identity_Server
                     {
                         facebookOptions.AppId = "6256044054421319";
                         facebookOptions.AppSecret = "02d0121396bc2c5f2a3e5713a620a7c2";
+                        facebookOptions.Scope.Add("public_profile");
+                        facebookOptions.Fields.Add("picture");
+
+                        facebookOptions.Events = new OAuthEvents
+                        {
+                            OnCreatingTicket = context =>
+                            {
+                                ClaimsIdentity identity = (ClaimsIdentity)context.Principal.Identity;
+
+                                string profileImg = context.User.GetProperty("picture").GetProperty("data").GetProperty("url").ToString();
+                                string id = context.User.GetProperty("id").ToString();
+
+                                identity.AddClaim(new Claim(JwtClaimTypes.Picture, profileImg));
+                                identity.AddClaim(new Claim(JwtClaimTypes.Id, id));
+                                identity.AddClaim(new Claim(JwtClaimTypes.AccessTokenHash, context.AccessToken));
+
+                                return Task.CompletedTask;
+                            }
+                        };
                     });
 
                     services.AddIdentityServer(options =>
