@@ -128,32 +128,4 @@ public class AccountController : Controller
             ReturnUrl = returnUrl
         });
     }
-
-    public async Task<IActionResult> ExternalRegister(ExternalRegisterViewModel vm)
-    {
-        var info = await signInManager.GetExternalLoginInfoAsync();
-        if (info == null)
-        {
-            return RedirectToAction("Login");
-        }
-
-        var user = new IdentityUser(vm.Username);
-        var result = await userManager.CreateAsync(user);
-
-        if (!result.Succeeded)
-        {
-            return View(vm);
-        }
-
-        result = await userManager.AddLoginAsync(user, info);
-
-        if (!result.Succeeded)
-        {
-            return View(vm);
-        }
-
-        await signInManager.SignInAsync(user, false);
-
-        return Redirect(vm.ReturnUrl);
-    }
 }
