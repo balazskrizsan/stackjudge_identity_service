@@ -1,4 +1,8 @@
 using System.Reflection;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using IdentityModel;
+using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +31,9 @@ namespace Stackjudge_Identity_Server
                 .ConfigureServices((_, services) =>
                 {
                     var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+
+                    services
+                        .AddScoped<IAccountService, AccountService>();
 
                     services.AddDbContext<AppDbContext>(options => { options.UseNpgsql(CONNECTION_STRING); });
 

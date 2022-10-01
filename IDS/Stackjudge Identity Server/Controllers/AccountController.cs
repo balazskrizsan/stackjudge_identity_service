@@ -3,21 +3,27 @@ using System.Threading.Tasks;
 using Duende.IdentityServer.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Stackjudge_Identity_Server.Data;
+using Stackjudge_Identity_Server.Enums;
+using Stackjudge_Identity_Server.Services;
 
 namespace Stackjudge_Identity_Server.Controllers;
 
 public class AccountController : Controller
 {
+    private readonly IAccountService accountService;
     private readonly SignInManager<IdentityUser> signInManager;
     private readonly UserManager<IdentityUser> userManager;
     private readonly IIdentityServerInteractionService interactionService;
 
     public AccountController(
+        IAccountService accountService,
         UserManager<IdentityUser> userManager,
         SignInManager<IdentityUser> signInManager,
         IIdentityServerInteractionService interactionService
     )
     {
+        this.accountService = accountService;
         this.signInManager = signInManager;
         this.userManager = userManager;
         this.interactionService = interactionService;
@@ -107,25 +113,16 @@ public class AccountController : Controller
 
     public async Task<IActionResult> ExternalLoginCallback(string returnUrl)
     {
-        var info = await signInManager.GetExternalLoginInfoAsync();
-        if (info == null)
+        var response = await accountService.ExternalLoginCallback(returnUrl);
+
+        switch (response.Type)
         {
-            return RedirectToAction("Login");
+            case ServiceRedirectResponseEnumTypes.Redirect:
+                return Redirect(response.Url);
+            case ServiceRedirectResponseEnumTypes.RedirectToAction:
+                return RedirectToAction(response.Url);
+            default:
+                throw new Exception($"Missing redirect type: {response.Type}");
         }
-
-        var result = await signInManager
-            .ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, false);
-
-        if (result.Succeeded)
-        {
-            return Redirect(returnUrl);
-        }
-
-        var username = info.Principal.FindFirst(ClaimTypes.Name.Replace(" ", "_")).Value;
-        return View("ExternalRegister", new ExternalRegisterViewModel
-        {
-            Username = username,
-            ReturnUrl = returnUrl
-        });
     }
 }
