@@ -1,9 +1,8 @@
-using System.Security.Claims;
+using System;
 using System.Threading.Tasks;
 using Duende.IdentityServer.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Stackjudge_Identity_Server.Data;
 using Stackjudge_Identity_Server.Enums;
 using Stackjudge_Identity_Server.Services;
 
