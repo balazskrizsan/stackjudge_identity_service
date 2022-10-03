@@ -169,7 +169,7 @@ public static class Config
             RequireClientSecret = false,
             RequirePkce = false, // go true
             RedirectUris = { "https://localhost:4200" },
-            PostLogoutRedirectUris = {},
+            PostLogoutRedirectUris = { },
             AllowedCorsOrigins = { "https://localhost:4200" },
             RequireConsent = false,
             AccessTokenLifetime = LIFETIME_1HOUR,
@@ -178,6 +178,7 @@ public static class Config
                 "openid",
                 "sj",
                 "sj.frontend",
+                "profile",
             },
             EnableLocalLogin = false,
             IdentityProviderRestrictions = { "Facebook" },
