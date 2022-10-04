@@ -220,18 +220,22 @@ namespace Stackjudge_Identity_Server.Data.Migrations.App
 
             modelBuilder.Entity("Stackjudge_Identity_Server.Data.Entity.ExtendedUser", b =>
                 {
-                    b.Property<int?>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("Id");
+                    b.Property<string>("UserId")
+                        .HasColumnType("text");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("Id"));
+                    b.Property<string>("AccessToken")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ExternalId")
+                        .HasColumnType("text");
 
                     b.Property<string>("ProfileUrl")
-                        .HasColumnType("text")
-                        .HasColumnName("ProfileUrl");
+                        .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
+
+                    b.HasIndex("ExternalId")
+                        .IsUnique();
 
                     b.ToTable("ExtendedUsers");
                 });
