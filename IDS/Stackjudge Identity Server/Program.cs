@@ -40,7 +40,6 @@ namespace Stackjudge_Identity_Server
                     services.AddIdentity<IdentityUser, IdentityRole>()
                         .AddEntityFrameworkStores<AppDbContext>()
                         .AddDefaultTokenProviders();
-                    
 
                     services.AddAuthentication().AddFacebook(facebookOptions =>
                     {
@@ -55,7 +54,11 @@ namespace Stackjudge_Identity_Server
                             {
                                 ClaimsIdentity identity = (ClaimsIdentity)context.Principal.Identity;
 
-                                string profileImg = context.User.GetProperty("picture").GetProperty("data").GetProperty("url").ToString();
+                                string profileImg = context.User
+                                    .GetProperty("picture")
+                                    .GetProperty("data")
+                                    .GetProperty("url")
+                                    .ToString();
                                 string id = context.User.GetProperty("id").ToString();
 
                                 identity.AddClaim(new Claim(JwtClaimTypes.Picture, profileImg));
