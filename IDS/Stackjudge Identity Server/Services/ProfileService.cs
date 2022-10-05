@@ -72,7 +72,7 @@ public class ProfileService<TUser> : IProfileService
 
         var identity = principal.Identities.First();
 
-        var url = AppDbContext.ExtendedUsers.First().ProfileUrl.ToString();
+        var url = AppDbContext.ExtendedUsers.First().ProfileUrl;
 
         identity.AddClaim(new Claim(JwtClaimTypes.Picture, url));
 
