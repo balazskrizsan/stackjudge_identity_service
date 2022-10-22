@@ -182,6 +182,7 @@ public static class Config
             },
             EnableLocalLogin = false,
             IdentityProviderRestrictions = { "Facebook" },
+            AccessTokenType = AccessTokenType.Reference
         },
     };
 }
