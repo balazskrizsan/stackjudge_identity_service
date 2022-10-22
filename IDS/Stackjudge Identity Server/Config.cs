@@ -133,7 +133,7 @@ public static class Config
             AllowAccessTokensViaBrowser = false,
             AllowedGrantTypes = GrantTypes.ClientCredentials,
             ClientSecrets = { new Secret("sj.aws.client.secret".Sha256()) },
-            AccessTokenLifetime = LIFETIME_1HOUR,
+            AccessTokenLifetime = LIFETIME_4HOURS,
             AllowedScopes =
             {
                 "sj",
@@ -152,7 +152,7 @@ public static class Config
             AllowAccessTokensViaBrowser = false,
             AllowedGrantTypes = GrantTypes.ClientCredentials,
             ClientSecrets = { new Secret("sj.notification.client.secret".Sha256()) },
-            AccessTokenLifetime = LIFETIME_1HOUR,
+            AccessTokenLifetime = LIFETIME_4HOURS,
             AllowedScopes =
             {
                 "sj",
@@ -172,7 +172,7 @@ public static class Config
             PostLogoutRedirectUris = { },
             AllowedCorsOrigins = { "https://localhost:4200" },
             RequireConsent = false,
-            AccessTokenLifetime = LIFETIME_1HOUR,
+            AccessTokenLifetime = LIFETIME_4HOURS,
             AllowedScopes =
             {
                 "openid",
