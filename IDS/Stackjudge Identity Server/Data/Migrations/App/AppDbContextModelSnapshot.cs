@@ -218,7 +218,7 @@ namespace Stackjudge_Identity_Server.Data.Migrations.App
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Stackjudge_Identity_Server.Data.Entity.ExtendedUser", b =>
+            modelBuilder.Entity("Stackjudge_Identity_Server.Data.Entity.ExtendedUsers", b =>
                 {
                     b.Property<string>("UserId")
                         .HasColumnType("text");

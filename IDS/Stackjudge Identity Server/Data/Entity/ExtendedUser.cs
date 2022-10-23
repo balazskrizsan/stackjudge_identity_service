@@ -8,14 +8,10 @@ namespace Stackjudge_Identity_Server.Data.Entity;
 [Index(nameof(ExternalId), IsUnique = true)]
 public class ExtendedUser
 {
-    [Key, Column]
-    public string UserId { get; set; }
-    [Column]
-    public string ExternalId { get; set; }
-    [Column]
-    public string AccessToken { get; set; }
-    [Column]
-    public string ProfileUrl { get; set; }
+    [Key, Column] public string UserId { get; set; }
+    [Column] public string ExternalId { get; set; }
+    [Column] public string AccessToken { get; set; }
+    [Column] public string ProfileUrl { get; set; }
 
     public ExtendedUser(string userId, string externalId, string accessToken, string profileUrl)
     {
