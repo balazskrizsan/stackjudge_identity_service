@@ -42,6 +42,14 @@ public class Startup
             app.UseHsts();
         }
 
+        app.UseAuthentication();
+        app.UseRouting();
+        app.UseAuthorization();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
+        
         app.UseCors(x => x.WithOrigins("https://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials());
 
         // Hack until com.auth0.jwk.UrlJwkProvider.WELL_KNOWN_JWKS_PATH hardcoded path won't be load from config

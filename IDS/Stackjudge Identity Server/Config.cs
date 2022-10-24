@@ -85,6 +85,8 @@ public static class Config
     public static IEnumerable<ApiScope> ApiScopes => new[]
     {
         new ApiScope("sj"),
+        new ApiScope("sj.ids"),
+        new ApiScope("sj.ids.api"),
         new ApiScope("sj.frontend"),
         new ApiScope("sj.aws"),
         new ApiScope("sj.aws.ec2"),
@@ -94,6 +96,7 @@ public static class Config
         new ApiScope("sj.aws.ses.send_mail"),
         new ApiScope("sj.notification"),
         new ApiScope("sj.notification.send_push"),
+        new ApiScope(IdentityServerConstants.LocalApi.ScopeName),
     };
 
     public static IEnumerable<ApiResource> ApiResources => new[]
@@ -119,6 +122,20 @@ public static class Config
                 "sj",
                 "sj.frontend",
                 "openid",
+                "profile",
+            },
+            ApiSecrets = new List<Secret> { new("sj_aws_scopes".Sha256()) },
+        },
+        new ApiResource("sj.resource.ids")
+        {
+            Scopes = new List<string>
+            {
+                "sj",
+                "sj.ids",
+                "sj.ids.api",
+                "openid",
+                "profile",
+                IdentityServerConstants.LocalApi.ScopeName
             },
             ApiSecrets = new List<Secret> { new("sj_aws_scopes".Sha256()) },
         }
@@ -184,5 +201,25 @@ public static class Config
             IdentityProviderRestrictions = { "Facebook" },
             AccessTokenType = AccessTokenType.Reference
         },
+        new Client
+        {
+            ClientId = "sj.ids.api",
+            AllowedGrantTypes = GrantTypes.ClientCredentials,
+            ClientSecrets = { new Secret("sj.ids.api.secret".Sha256()) },
+            AllowOfflineAccess = true,
+            RequireClientSecret = false,
+            RedirectUris = { },
+            PostLogoutRedirectUris = { },
+            RequirePkce = true,
+            AllowedScopes =
+            {
+                "sj",
+                "sj.ids",
+                "sj.ids.api",
+                "openid",
+                "profile",
+                IdentityServerConstants.LocalApi.ScopeName
+            }
+        }
     };
 }

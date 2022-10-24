@@ -1,4 +1,6 @@
 using System.Linq;
+using Duende.IdentityServer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stackjudge_Identity_Server.Api.Builders;
 using Stackjudge_Identity_Server.Api.Response;
@@ -20,6 +22,7 @@ public class GetListAction
 
     [HttpPost]
     [Route("/api/account/list")]
+    [Authorize(IdentityServerConstants.LocalApi.PolicyName)]
     public ResponseEntity<ResponseData<GetResponse>> GetInfoList()
     {
         var responseEntityBuilder = new ResponseEntityBuilder<GetResponse>

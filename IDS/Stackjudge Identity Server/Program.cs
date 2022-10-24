@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -32,15 +33,11 @@ namespace Stackjudge_Identity_Server
                 {
                     var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
-                    services
-                        .AddScoped<IAccountService, AccountService>();
-
+                    services.AddScoped<IAccountService, AccountService>();
                     services.AddDbContext<AppDbContext>(options => { options.UseNpgsql(CONNECTION_STRING); });
-
                     services.AddIdentity<IdentityUser, IdentityRole>()
                         .AddEntityFrameworkStores<AppDbContext>()
                         .AddDefaultTokenProviders();
-
                     services.AddAuthentication().AddFacebook(facebookOptions =>
                     {
                         facebookOptions.AppId = "6256044054421319";
@@ -69,7 +66,6 @@ namespace Stackjudge_Identity_Server
                             }
                         };
                     });
-
                     services.AddIdentityServer(options =>
                         {
                             options.Events.RaiseErrorEvents = true;
@@ -77,6 +73,7 @@ namespace Stackjudge_Identity_Server
                             options.Events.RaiseFailureEvents = true;
                             options.Events.RaiseSuccessEvents = true;
                             options.EmitStaticAudienceClaim = true;
+                            options.Discovery.CustomEntries.Add("local_api", "/api/account/list");
                         })
                         .AddAspNetIdentity<IdentityUser>()
                         .AddConfigurationStore(options =>
@@ -97,6 +94,8 @@ namespace Stackjudge_Identity_Server
                         .AddInMemoryApiScopes(Config.ApiScopes)
                         .AddInMemoryIdentityResources(Config.IdentityResources)
                         .AddProfileService<ProfileService<IdentityUser>>();
+
+                    services.AddLocalApiAuthentication();
                 })
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }
