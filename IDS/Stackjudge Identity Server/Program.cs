@@ -31,10 +31,10 @@ namespace Stackjudge_Identity_Server
                         .AddAspNetIdentity<IdentityUser>()
                         .AddConfigurationStore(AppConfigService.ConfigConfigurationStore)
                         .AddOperationalStore(AppConfigService.ConfigOperationalStore)
-                        .AddInMemoryClients(Config.Clients)
-                        .AddInMemoryApiResources(Config.ApiResources)
-                        .AddInMemoryApiScopes(Config.ApiScopes)
-                        .AddInMemoryIdentityResources(Config.IdentityResources)
+                        .AddInMemoryClients(OidcConfig.Clients)
+                        .AddInMemoryApiResources(OidcConfig.ApiResources)
+                        .AddInMemoryApiScopes(OidcConfig.ApiScopes)
+                        .AddInMemoryIdentityResources(OidcConfig.IdentityResources)
                         .AddProfileService<ProfileService<IdentityUser>>();
                     services.AddLocalApiAuthentication();
                 })

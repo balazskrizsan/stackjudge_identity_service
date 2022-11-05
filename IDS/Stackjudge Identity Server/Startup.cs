@@ -91,7 +91,7 @@ public class Startup
             //     context.Database.Migrate();
             //     if (!context.Clients.Any())
             //     {
-            //         foreach (var client in Config.Clients)
+            //         foreach (var client in OidcConfig.Clients)
             //         {
             //             context.Clients.Add(client.ToEntity());
             //         }
@@ -101,7 +101,7 @@ public class Startup
             //
             //     if (!context.IdentityResources.Any())
             //     {
-            //         foreach (var resource in Config.IdentityResources)
+            //         foreach (var resource in OidcConfig.IdentityResources)
             //         {
             //             context.IdentityResources.Add(resource.ToEntity());
             //         }
@@ -110,7 +110,7 @@ public class Startup
             //
             //     if (!context.ApiResources.Any())
             //     {
-            //         foreach (var resource in Config.ApiResources)
+            //         foreach (var resource in OidcConfig.ApiResources)
             //         {
             //             context.ApiResources.Add(resource.ToEntity());
             //         }
