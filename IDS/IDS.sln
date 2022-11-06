@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stackjudge Identity Server", "Stackjudge Identity Server\Stackjudge Identity Server.csproj", "{84EDEE5B-81A9-44C8-AC93-4EEC391802FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackjudgeIdentityServer", "StackjudgeIdentityServer\StackjudgeIdentityServer.csproj", "{84EDEE5B-81A9-44C8-AC93-4EEC391802FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
