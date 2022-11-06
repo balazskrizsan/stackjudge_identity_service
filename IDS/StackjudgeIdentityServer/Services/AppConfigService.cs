@@ -1,4 +1,3 @@
-using System;
 using System.Reflection;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -79,8 +78,6 @@ public static class AppConfigService
 
     private static string GetConnectionString()
     {
-        var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-
-        return Program.Configuration["psqlConnectionString"];
+        return AppSettingsService.Get()["psqlConnectionString"];
     }
 }
