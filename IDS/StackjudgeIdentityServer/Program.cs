@@ -1,5 +1,7 @@
+using System;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StackjudgeIdentityServer.Data;
@@ -9,11 +11,23 @@ namespace StackjudgeIdentityServer
 {
     public class Program
     {
+        public static IConfigurationRoot Configuration;
+
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args)
-                .Build()
-                .Run();
+            CreateHostBuilder(args).Build().Run();
+
+            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+            Configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .AddJsonFile($"appsettings.{environment}.json")
+                .AddEnvironmentVariables()
+                .Build();
+
+            Console.WriteLine("============================================================= App info");
+            Console.WriteLine($"Env: {environment}");
+            Console.WriteLine("=============================================================");
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

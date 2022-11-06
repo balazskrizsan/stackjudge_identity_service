@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ public static class AppConfigService
     {
         options.UseNpgsql(GetConnectionString());
     }
-    
+
     public static void ConfigFacebookOptions(FacebookOptions options)
     {
         options.AppId = "6256044054421319";
@@ -78,6 +79,8 @@ public static class AppConfigService
 
     private static string GetConnectionString()
     {
-        return "Host=192.168.33.10;Database=stackjudge;Port=54322;Username=admin;Password=admin_pass;";
+        var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+        return Program.Configuration["psqlConnectionString"];
     }
 }
