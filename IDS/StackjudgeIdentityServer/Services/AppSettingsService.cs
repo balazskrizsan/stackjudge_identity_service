@@ -5,23 +5,27 @@ namespace StackjudgeIdentityServer.Services;
 
 public static class AppSettingsService
 {
-    private static IConfigurationRoot settings = null;
-    
+    private static IConfigurationRoot settings;
+
     public static IConfigurationRoot Get()
     {
         if (null != settings)
         {
             return settings;
         }
-        
-        var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+        var env = Environment.GetEnvironmentVariable("env");
+
+        var customEnv = $"appsettings.{env}.json";
+
+        Console.WriteLine($"Loading custom environment variables: {customEnv}");
 
         settings = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json")
-            .AddJsonFile($"appsettings.{environment}.json")
+            .AddJsonFile($"appsettings.{customEnv}.json")
             .AddEnvironmentVariables()
             .Build();
-        
+
         return settings;
     }
 }
