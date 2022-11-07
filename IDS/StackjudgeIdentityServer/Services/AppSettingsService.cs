@@ -22,7 +22,7 @@ public static class AppSettingsService
 
         settings = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json")
-            .AddJsonFile($"appsettings.{customEnv}.json")
+            .AddJsonFile(customEnv)
             .AddEnvironmentVariables()
             .Build();
 
