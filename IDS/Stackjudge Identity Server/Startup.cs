@@ -1,9 +1,12 @@
 using System;
+using Duende.IdentityServer.EntityFramework.DbContexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Stackjudge_Identity_Server.Data;
 
 namespace Stackjudge_Identity_Server
 {
@@ -42,7 +45,7 @@ namespace Stackjudge_Identity_Server
             app.UseCors(x => x.WithOrigins("https://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials());
 
             // Hack until com.auth0.jwk.UrlJwkProvider.WELL_KNOWN_JWKS_PATH hardcoded path won't be load from config
-            app.Use(async (context,next) =>
+            app.Use(async (context, next) =>
             {
                 var url = context.Request.Path.Value;
 
@@ -60,11 +63,55 @@ namespace Stackjudge_Identity_Server
 
             app.UseRouting();
 
+            InitializeDatabase(app);
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });
+        }
+
+        private static void InitializeDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
+                serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>().Database.Migrate();
+                serviceScope.ServiceProvider.GetRequiredService<AppDbContext>().Database.Migrate();
+
+                // Run only on db setup
+                //
+                //     var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
+                //     context.Database.Migrate();
+                //     if (!context.Clients.Any())
+                //     {
+                //         foreach (var client in OidcConfig.Clients)
+                //         {
+                //             context.Clients.Add(client.ToEntity());
+                //         }
+                //     
+                //         context.SaveChanges();
+                //     }
+                //
+                //     if (!context.IdentityResources.Any())
+                //     {
+                //         foreach (var resource in OidcConfig.IdentityResources)
+                //         {
+                //             context.IdentityResources.Add(resource.ToEntity());
+                //         }
+                //         context.SaveChanges();
+                //     }
+                //
+                //     if (!context.ApiResources.Any())
+                //     {
+                //         foreach (var resource in OidcConfig.ApiResources)
+                //         {
+                //             context.ApiResources.Add(resource.ToEntity());
+                //         }
+                //         context.SaveChanges();
+                //     }
+            }
         }
     }
 }
