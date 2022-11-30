@@ -1,12 +1,4 @@
 {
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:27183",
-      "sslPort": 44340
-    }
-  },
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
@@ -17,12 +9,19 @@
     },
     "Stackjudge Identity Server": {
       "commandName": "Project",
-      "dotnetRunMessages": "true",
-      "launchBrowser": false,
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "dotnetRunMessages": "true",
+      "applicationUrl": "https://localhost:6201;http://localhost:6200"
+    }
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:27183",
+      "sslPort": 44340
     }
   }
 }

@@ -10,4 +10,14 @@
       <PackageReference Include="Duende.IdentityServer" Version="6.1.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="keystore\sjdev.pfx" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="keystore\sjdev.pfx">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

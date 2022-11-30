@@ -79,30 +79,18 @@ public static class Config
 
     public static IEnumerable<ApiScope> ApiScopes => new[]
     {
-        new ApiScope("sj"),
-        new ApiScope("sj.aws"),
-        new ApiScope("sj.aws.ec2"),
-        new ApiScope("sj.aws.ec2.upload_company_logo"),
-        new ApiScope("sj.aws.ec2.upload_company_map"),
-        new ApiScope("sj.aws.ses"),
-        new ApiScope("sj.aws.ses.send_mail"),
+        new ApiScope("read:weatherforecast")
     };
 
     public static IEnumerable<ApiResource> ApiResources => new[]
     {
-        new ApiResource("js_aws")
+        new ApiResource("introspection")
         {
             Scopes = new List<string>
             {
-                "sj",
-                "sj.aws",
-                "sj.aws.ec2",
-                "sj.aws.ec2.upload_company_logo",
-                "sj.aws.ec2.upload_company_map",
-                "sj.aws.ses",
-                "sj.aws.ses.send_mail"
+                "read:weatherforecast"
             },
-            ApiSecrets = new List<Secret> { new("js_aws_scopes".Sha256()) },
+            ApiSecrets = new List<Secret> { new("introspection_secret".Sha256()) },
         }
     };
 
@@ -110,22 +98,44 @@ public static class Config
     {
         new Client
         {
-            ClientId = "sj.aws",
-            ClientName = "Machine2Machine/Sj/Aws",
+            ClientId = "ids.ws",
+            ClientName = "Machine2Machine/Ws",
             AllowAccessTokensViaBrowser = false,
             AllowedGrantTypes = GrantTypes.ClientCredentials,
-            ClientSecrets = { new Secret("m2m.client.secret".Sha256()) },
+            ClientSecrets = { new Secret("ids.ws.client.secret".Sha256()) },
             AccessTokenLifetime = LIFETIME_5MINS,
             AllowedScopes =
             {
-                "sj",
-                "sj.aws",
-                "sj.aws.ec2",
-                "sj.aws.ec2.upload_company_logo",
-                "sj.aws.ec2.upload_company_map",
-                "sj.aws.ses",
-                "sj.aws.ses.send_mail"
+                "read:weatherforecast",
             },
+        },
+
+        new Client
+        {
+            ClientId = "ids.frontend",
+            ClientName = "Frontend",
+            AllowAccessTokensViaBrowser=true,
+            AllowedGrantTypes= GrantTypes.Code,
+            RequireClientSecret = false,
+            RequirePkce = false,
+            RedirectUris =
+            {
+                "https://localhost:4200"
+            },
+            RequireConsent = false,
+            AccessTokenLifetime = LIFETIME_5MINS,
+            AllowedScopes =
+            {
+                "read:weatherforecast",
+                IdentityServerConstants.StandardScopes.OpenId,
+                IdentityServerConstants.StandardScopes.Profile
+            },
+            EnableLocalLogin = false,
+            IdentityProviderRestrictions =
+            {
+                "Facebook"
+            },
+            AccessTokenType = AccessTokenType.Jwt
         },
     };
 }
