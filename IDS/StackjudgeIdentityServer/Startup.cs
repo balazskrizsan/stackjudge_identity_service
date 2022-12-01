@@ -51,16 +51,10 @@ public class Startup
         {
             endpoints.MapControllers();
         });
-        
         app.UseCors(x => x.WithOrigins("https://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials());
-
-        // Hack until com.auth0.jwk.UrlJwkProvider.WELL_KNOWN_JWKS_PATH hardcoded path won't be load from config
-
         app.UseIdentityServer();
-
         app.UseHttpsRedirection();
         app.UseStaticFiles();
-
         app.UseRouting();
 
         InitializeDatabase(app);
