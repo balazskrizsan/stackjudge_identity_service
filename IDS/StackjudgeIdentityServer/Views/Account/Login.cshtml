@@ -1,7 +1,7 @@
 @model LoginViewModel
 
 <h1>Login</h1>
-<form asp-controller="GetListAction" asp-action="ExternalLogin"
+<form asp-controller="Account" asp-action="ExternalLogin"
       asp-route-returnUrl="@ViewBag.ReturnUrl" method="post">
     @foreach (var provider in ViewBag.ExternalProviders)
     {

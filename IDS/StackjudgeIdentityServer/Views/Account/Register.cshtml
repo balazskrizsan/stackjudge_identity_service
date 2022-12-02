@@ -2,7 +2,7 @@
 
 <h1>Register</h1>
 
-<form asp-controller="GetListAction" asp-action="Register" method="post">
+<form asp-controller="Account" asp-action="Register" method="post">
     <input type="hidden" asp-for="ReturnUrl" />
     <div>
         <label>Username</label>
@@ -24,5 +24,4 @@
     </div>
 </form>
 
-<a asp-controller="GetListAction" asp-action="Login"
-   asp-route-returnUrl="@Model.ReturnUrl">Back to Login</a>
+<a asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">Back to Login</a>

@@ -104,7 +104,7 @@ public class AccountController : Controller
 
     public async Task<IActionResult> ExternalLogin(string provider, string returnUrl)
     {
-        var redirectUri = Url.Action(nameof(ExternalLoginCallback), "GetListAction", new { returnUrl });
+        var redirectUri = Url.Action(nameof(ExternalLoginCallback), "Account", new { returnUrl });
         var properties = signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUri);
 
         return Challenge(properties, provider);
