@@ -21,21 +21,21 @@ namespace Stackjudge_Identity_Server
                 .CreateDefaultBuilder(args)
                 .ConfigureServices((_, services) =>
                 {
-                    // services.AddScoped<IAccountService, AccountService>();
+                    services.AddScoped<IAccountService, AccountService>();
                     services.AddDbContext<AppDbContext>(AppConfigService.ConfigDbContext);
                     services.AddIdentity<IdentityUser, IdentityRole>()
                         .AddEntityFrameworkStores<AppDbContext>()
                         .AddDefaultTokenProviders();
                     services.AddAuthentication().AddFacebook(AppConfigService.ConfigFacebookOptions);
                     services.AddIdentityServer(AppConfigService.ConfigIdentityServer)
-                        //.AddAspNetIdentity<IdentityUser>()
+                        .AddAspNetIdentity<IdentityUser>()
                         .AddConfigurationStore(AppConfigService.ConfigConfigurationStore)
                         .AddOperationalStore(AppConfigService.ConfigOperationalStore)
                         .AddInMemoryClients(Config.Clients)
                         .AddInMemoryApiResources(Config.ApiResources)
                         .AddInMemoryApiScopes(Config.ApiScopes)
-                        .AddInMemoryIdentityResources(Config.IdentityResources);
-                        //.AddProfileService<ProfileService<IdentityUser>>();
+                        .AddInMemoryIdentityResources(Config.IdentityResources)
+                        .AddProfileService<ProfileService<IdentityUser>>();
                     services.AddLocalApiAuthentication();
                 })
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });

@@ -26,6 +26,7 @@ namespace Stackjudge_Identity_Server
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddCors();
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,7 +69,8 @@ namespace Stackjudge_Identity_Server
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();
-                endpoints.MapFallbackToPage("/_Host");
+                // endpoints.MapFallbackToPage("/_Host");
+                endpoints.MapDefaultControllerRoute();
             });
         }
 

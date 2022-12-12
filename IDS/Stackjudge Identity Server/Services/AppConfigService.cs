@@ -19,8 +19,8 @@ namespace Stackjudge_Identity_Server.Services
 
         public static void ConfigFacebookOptions(FacebookOptions options)
         {
-            options.AppId = "";
-            options.AppSecret = "";
+            options.AppId = "708557713838713";
+            options.AppSecret = "d91ce749c2874c5dcacd57619f305865";
             options.Scope.Add("public_profile");
             options.Fields.Add("picture");
 
