@@ -19,7 +19,7 @@ import { AppComponent } from './app.component';
         redirectUrl: window.location.origin,
         postLogoutRedirectUri: window.location.origin,
         clientId: 'ids.frontend',
-        scope: 'read:weatherforecast',
+        scope: 'openid read:weatherforecast',
         responseType: 'code',
         silentRenew: true,
         useRefreshToken: true,
