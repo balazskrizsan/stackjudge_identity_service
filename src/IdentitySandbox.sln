@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityService", "IdentityService\IdentityService.csproj", "{84EDEE5B-81A9-44C8-AC93-4EEC391802FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherService", "WeatherService\WeatherService.csproj", "{90027789-FD19-47BD-A4CC-C4430301BC81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{84EDEE5B-81A9-44C8-AC93-4EEC391802FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84EDEE5B-81A9-44C8-AC93-4EEC391802FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84EDEE5B-81A9-44C8-AC93-4EEC391802FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90027789-FD19-47BD-A4CC-C4430301BC81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90027789-FD19-47BD-A4CC-C4430301BC81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90027789-FD19-47BD-A4CC-C4430301BC81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90027789-FD19-47BD-A4CC-C4430301BC81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
