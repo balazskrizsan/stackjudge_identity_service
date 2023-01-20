@@ -75,8 +75,13 @@ public class AccountService : IAccountService
         if (currentExtendedUser == null)
         {
             appDbContext.ExtendedUsers.Add(new ExtendedUser(user.Id, externalId, accessToken, picture));
-            await appDbContext.SaveChangesAsync();
         }
+        else
+        {
+            currentExtendedUser.UpdateProfile(picture, accessToken);
+        }
+
+        await appDbContext.SaveChangesAsync();
 
         // @todo: add back
         // if (!createResult.Succeeded) return View(vm);

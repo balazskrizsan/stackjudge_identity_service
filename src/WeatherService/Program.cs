@@ -1,34 +1,24 @@
+using WeatherService;
+using WeatherService.Authentication;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddHttpClient("IdentityService", client =>
+{
+    var baseUrl = builder.Configuration.GetValue<string>("Authorization:IdentityServiceUrl");
+    client.BaseAddress = new Uri(baseUrl);
+});
+
+
+builder.Services.AddCors(o => o.AddDefaultPolicy(b => b.AllowAnyHeader()
+    .AllowAnyMethod()
+    .AllowAnyOrigin()));
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-
 app.UseHttpsRedirection();
+app.UseCors();
+app.UseIdentityServerAuthorization(builder.Configuration.GetValue<string>("Authorization:IdentityServiceCredentials"));
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateTime.Now.AddDays(index),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-});
-
+app.MapWeatherForecastApi();
 app.Run();
-
-internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

@@ -20,5 +20,11 @@ namespace IdentityService.Models
             AccessToken = accessToken;
             ProfileUrl = profileUrl;
         }
+
+        public void UpdateProfile(string profileUrl, string accessToken)
+        {
+            ProfileUrl = profileUrl;
+            AccessToken = accessToken;
+        }
     }
 }
