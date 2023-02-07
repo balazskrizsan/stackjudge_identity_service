@@ -33,7 +33,7 @@ namespace WeatherService.Authentication
             };
 
             introspectionRequest.Headers.Add(
-                "Authorization", 
+                "Authorization",
                 $"Basic {Convert.ToBase64String(Encoding.UTF8.GetBytes(identityServiceCredentials))}");
 
             var introspectionResponse = await identityServiceClient.IntrospectTokenAsync(introspectionRequest);

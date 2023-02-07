@@ -16,16 +16,16 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     AppRoutingModule,
     AuthModule.forRoot({
       config: {
-        authority: 'https://localhost:6201',
+        authority: 'http://localhost:58583',
         redirectUrl: window.location.origin,
         postLogoutRedirectUri: window.location.origin,
-        clientId: 'ids.frontend',
-        scope: 'openid read:weatherforecast',
+        clientId: 'account_security',
+        scope: 'openid account_security_api.full_access',
         responseType: 'code',
         silentRenew: true,
         useRefreshToken: true,
         logLevel: LogLevel.Debug,
-        customParamsAuthRequest: {"acr_values": "idp:Facebook"}
+        // customParamsAuthRequest: {"acr_values": "idp:Facebook"}
       },
     }),
   ],

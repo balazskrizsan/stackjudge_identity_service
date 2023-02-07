@@ -10,7 +10,7 @@ import { catchError, map } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   title = 'identity-sandbox-ui';
-  private readonly BACKEND_URL = 'https://localhost:7090/weatherforecast';
+  private readonly BACKEND_URL = 'https://devmachine.diligentdatasystems.com:5051';
   public data: any;
 
   constructor(
