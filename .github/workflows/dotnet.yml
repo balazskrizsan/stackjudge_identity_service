@@ -28,8 +28,8 @@ jobs:
         pwd
         echo "===========> ls -hal:"
         ls -hal
-        echo "===========> ls -hal /IDS:"
-        ls -hal /IDS
+        echo "===========> ls -hal ./IDS:"
+        ls -hal ./IDS
     - 
       name: Restore dependencies
       run: cd IDS\StackjudgeIdentityServer && dotnet restore
