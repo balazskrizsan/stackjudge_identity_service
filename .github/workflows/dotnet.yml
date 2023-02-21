@@ -32,10 +32,10 @@ jobs:
         ls -hal ./IDS
     - 
       name: Restore dependencies
-      run: cd IDS\StackjudgeIdentityServer && dotnet restore
+      run: cd IDS/StackjudgeIdentityServer && dotnet restore
     - 
       name: Build
-      run: cd IDS\StackjudgeIdentityServer && dotnet build  --no-restore
+      run: cd IDS/StackjudgeIdentityServer && dotnet build  --no-restore
     - 
       name: Test
       run: dotnet test --no-build --verbosity normal
