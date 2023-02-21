@@ -27,6 +27,7 @@ jobs:
         echo "===========> pwd:"
         pwd
         echo "===========> ls -hal:"
+        ls -hal
     - 
       name: Restore dependencies
       run: cd IDS\StackjudgeIdentityServer && dotnet restore
