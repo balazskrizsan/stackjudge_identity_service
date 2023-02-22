@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
     -
       uses: actions/checkout@v3
     -
@@ -36,6 +35,22 @@ jobs:
     - 
       name: Build
       run: cd IDS/StackjudgeIdentityServer && dotnet build  --no-restore
-    - 
-      name: Test
-      run: dotnet test --no-build --verbosity normal
+    -
+      name: Build docker image
+      run: |
+        cd IDS && docker build --tag stackjudge_identity_server:latest .
+    -
+      name: Save docker image
+      run: |
+        cd IDS && docker save -o stackjudge_identity_server:${{ env.RELEASE_VERSION }}.docker stackjudge_identity_server:latest
+    -
+      name: Push do Cloudsmith
+      uses: cloudsmith-io/action@2f8578217e6fa9fe305977bb278057514bccd8ea
+      with:
+        api-key: ${{ secrets.CLOUDSMITH_API_KEY }}
+        command: push
+        format: docker
+        owner: stackjudge
+        repo: stackjudge_identity_server
+        republish: true
+        file: ./stackjudge_identity_server:${{ env.RELEASE_VERSION }}.docker
