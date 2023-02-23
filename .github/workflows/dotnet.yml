@@ -48,6 +48,15 @@ jobs:
       run: |
         cd IDS && docker save -o ./../stackjudge_identity_server:${{ env.RELEASE_VERSION }}.docker stackjudge_identity_server:latest
     -
+      name: File system info
+      run: |
+        echo "===========> pwd:"
+        pwd
+        echo "===========> ls -hal:"
+        ls -hal
+        echo "===========> ls -hal ./IDS:"
+        ls -hal ./IDS
+    -
       name: Push do Cloudsmith
       uses: cloudsmith-io/action@2f8578217e6fa9fe305977bb278057514bccd8ea
       with:
