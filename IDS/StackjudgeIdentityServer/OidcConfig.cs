@@ -166,6 +166,26 @@ public static class OidcConfig
                 "sj.ids",
                 "sj.ids.api",
             }
+        },
+        new Client
+        {
+            ClientId = "sj.exchange",
+            AllowedGrantTypes =  new[] { "token_exchange" },
+            ClientSecrets = { new Secret("sj.exchange".Sha256()) },
+            AllowOfflineAccess = true,
+            RequireClientSecret = false,
+            RedirectUris = { },
+            PostLogoutRedirectUris = { },
+            RequirePkce = true,
+            AllowedScopes =
+            {
+                IdentityServerConstants.StandardScopes.OpenId,
+                IdentityServerConstants.StandardScopes.Profile,
+                IdentityServerConstants.LocalApi.ScopeName,
+                "sj",
+                "sj.aws",
+                "sj.aws.s3",
+            }
         }
     };
 }
