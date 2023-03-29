@@ -1,7 +1,6 @@
-using System;
+using Duende.IdentityServer.Validation;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StackjudgeIdentityServer.Data;
@@ -21,6 +20,7 @@ namespace StackjudgeIdentityServer
                 .CreateDefaultBuilder(args)
                 .ConfigureServices((_, services) =>
                 {
+                    services.AddScoped<IExtensionGrantValidator, TokenExchangeGrantValidatorService>();
                     services.AddScoped<IAccountService, AccountService>();
                     services.AddDbContext<AppDbContext>(AppConfigService.ConfigDbContext);
                     services.AddIdentity<IdentityUser, IdentityRole>()

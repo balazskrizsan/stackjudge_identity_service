@@ -72,7 +72,14 @@ public class ProfileService<TUser> : IProfileService
 
         var identity = principal.Identities.First();
 
-        var url = AppDbContext.ExtendedUsers.First().ProfileUrl;
+        var url = "";
+        try
+        {
+            url = AppDbContext.ExtendedUsers.First().ProfileUrl;
+        }
+        catch (Exception e)
+        {
+        }
 
         identity.AddClaim(new Claim(JwtClaimTypes.Picture, url));
 
@@ -112,6 +119,11 @@ public class ProfileService<TUser> : IProfileService
 
     protected virtual async Task<TUser> FindUserAsync(string subjectId)
     {
+        if (subjectId.StartsWith("xc/"))
+        {
+            return new IdentityUser("mock_user") as TUser;
+        }
+
         var user = await UserManager.FindByIdAsync(subjectId);
         if (user == null)
         {

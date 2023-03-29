@@ -17,6 +17,22 @@ public static class OidcConfig
     public const int LIFETIME_2HOURS = 7200;
     public const int LIFETIME_4HOURS = 14400;
 
+    private static Dictionary<string, string> exchangeMap = new()
+    {
+        {"xc/sj.aws.s3", "sj.aws.s3"}
+    };
+
+    public static bool IsValidateExchange(string exchangeFrom, string exchangeTo)
+    {
+        exchangeMap.TryGetValue(exchangeFrom, out string exchangeFromValue);
+        if (null == exchangeFromValue)
+        {
+            return false;
+        }
+
+        return exchangeFromValue == exchangeTo;
+    }
+    
     public static IEnumerable<IdentityResource> IdentityResources => new[]
     {
         new IdentityResources.OpenId(),
@@ -35,6 +51,9 @@ public static class OidcConfig
         new ApiScope("sj.ids.api"),
         new ApiScope("sj.frontend"),
         new ApiScope("sj.aws"),
+        new ApiScope("sj.aws.s3"),
+        new ApiScope("xc/sj.aws.s3"),
+        new ApiScope("xc/sj.aws.ses"),
         new ApiScope("sj.aws.ec2"),
         new ApiScope("sj.aws.ec2.upload_company_logo"),
         new ApiScope("sj.aws.ec2.upload_company_map"),
@@ -53,13 +72,10 @@ public static class OidcConfig
             {
                 "sj",
                 "sj.aws",
-                "sj.aws.ec2",
-                "sj.aws.ec2.upload_company_logo",
-                "sj.aws.ec2.upload_company_map",
-                "sj.aws.ses",
-                "sj.aws.ses.send_mail",
+                "xc/sj.aws.s3",
+                "sj.aws.s3",
             },
-            ApiSecrets = new List<Secret> { new("sj_aws_scopes".Sha256()) },
+            ApiSecrets = new List<Secret> { new("sj.resource.aws".Sha256()) },
         },
         new ApiResource("sj.resource.frontend")
         {
@@ -101,6 +117,8 @@ public static class OidcConfig
             {
                 "sj",
                 "sj.aws",
+                "xc/sj.aws.s3",
+                "xc/sj.aws.ses",
                 "sj.aws.ec2",
                 "sj.aws.ec2.upload_company_logo",
                 "sj.aws.ec2.upload_company_map",
@@ -145,7 +163,7 @@ public static class OidcConfig
             },
             EnableLocalLogin = false,
             IdentityProviderRestrictions = { "Facebook" },
-            AccessTokenType = AccessTokenType.Reference
+            AccessTokenType = AccessTokenType.Jwt
         },
         new Client
         {
