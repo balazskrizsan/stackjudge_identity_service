@@ -3,7 +3,7 @@ using StackjudgeIdentityServer.Data.Entity;
 
 namespace StackjudgeIdentityServer.Api.Response;
 
-public class GetResponse
+public class GetListResponse
 {
-    public IdsUser ExtendedUsers { get; set; }
+    public List<IdsUser> ExtendedUsers { get; set; }
 }

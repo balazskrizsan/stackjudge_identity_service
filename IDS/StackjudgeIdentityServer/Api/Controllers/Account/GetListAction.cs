@@ -23,11 +23,11 @@ public class GetListAction
     [HttpPost]
     [Route("/api/account/list")]
     [Authorize(IdentityServerConstants.LocalApi.PolicyName)]
-    public ResponseEntity<ResponseData<GetResponse>> GetInfoList()
+    public ResponseEntity<ResponseData<GetListResponse>> GetInfoList()
     {
-        var responseEntityBuilder = new ResponseEntityBuilder<GetResponse>
+        var responseEntityBuilder = new ResponseEntityBuilder<GetListResponse>
         {
-            Data = new GetResponse
+            Data = new GetListResponse
             {
                 ExtendedUsers = appDbContext.ExtendedUsers
                     .Join(
