@@ -77,8 +77,9 @@ public class ProfileService<TUser> : IProfileService
         {
             url = AppDbContext.ExtendedUsers.First().ProfileUrl;
         }
-        catch (Exception e)
+        catch (Exception)
         {
+            // ignored
         }
 
         identity.AddClaim(new Claim(JwtClaimTypes.Picture, url));
