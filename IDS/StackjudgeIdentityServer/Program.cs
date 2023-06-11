@@ -31,7 +31,7 @@ namespace StackjudgeIdentityServer
                         .AddAspNetIdentity<IdentityUser>()
                         .AddConfigurationStore(AppConfigService.ConfigConfigurationStore)
                         .AddOperationalStore(AppConfigService.ConfigOperationalStore)
-                        .AddInMemoryClients(OidcConfig.Clients)
+                        .AddInMemoryClients(OidcConfig.GetClients())
                         .AddInMemoryApiResources(OidcConfig.ApiResources)
                         .AddInMemoryApiScopes(OidcConfig.ApiScopes)
                         .AddInMemoryIdentityResources(OidcConfig.IdentityResources)

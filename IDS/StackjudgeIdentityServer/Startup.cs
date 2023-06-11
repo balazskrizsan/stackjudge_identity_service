@@ -1,6 +1,6 @@
+using System;
 using System.Linq;
 using Duende.IdentityServer.EntityFramework.DbContexts;
-using Duende.IdentityServer.EntityFramework.Mappers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StackjudgeIdentityServer.Data;
+using StackjudgeIdentityServer.Services;
 
 namespace StackjudgeIdentityServer;
 
@@ -33,6 +34,7 @@ public class Startup
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
+        LogOidcConfig();
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
@@ -47,10 +49,7 @@ public class Startup
         app.UseAuthentication();
         app.UseRouting();
         app.UseAuthorization();
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllers();
-        });
+        app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         app.UseCors(x => x.WithOrigins("https://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials());
         app.UseIdentityServer();
         app.UseHttpsRedirection();
@@ -73,6 +72,27 @@ public class Startup
         });
     }
 
+    private void LogOidcConfig()
+    {
+        Console.WriteLine("== Generating configurations:");
+        var clientIds = OidcConfig.GetClientIds();
+        Console.WriteLine($"===== Client ids: {String.Join(", ", clientIds)}");
+        Console.WriteLine($"===== Client Scopes:");
+        foreach (var clientId in clientIds)
+        {
+            var scopesForClient = ScopeService.GetScopesByClientId(clientId);
+            Console.WriteLine($"======== {clientId}: {String.Join(", ", scopesForClient)}");
+        }
+
+        var apiScopesHasApiResource = ScopeService.GetApiScopesHasApiResource().Select(s => s.Name);
+        Console.WriteLine($"===== All Api scopes: {String.Join(", ", apiScopesHasApiResource)}");
+        var scopeNamesWithExchangeableTo = ScopeService.GetScopeNamesWithExchangeableTo();
+        Console.WriteLine($"===== All exchangeable scopes: {String.Join(", ", scopeNamesWithExchangeableTo)}");
+        var exchangeScopes = ScopeService.GetExchangeScopes();
+        Console.WriteLine($"===== All exchange scopes: {String.Join(", ", exchangeScopes)}");
+        Console.WriteLine("===============");
+    }
+
     private void InitializeDatabase(IApplicationBuilder app)
     {
         using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
@@ -85,11 +105,11 @@ public class Startup
             //
             //     var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
             //     context.Database.Migrate();
-            //     if (!context.Clients.Any())
+            //     if (!context.ClientIds.Any())
             //     {
-            //         foreach (var client in OidcConfig.Clients)
+            //         foreach (var client in OidcConfig.ClientIds)
             //         {
-            //             context.Clients.Add(client.ToEntity());
+            //             context.ClientIds.Add(client.ToEntity());
             //         }
             //     
             //         context.SaveChanges();
@@ -104,11 +124,11 @@ public class Startup
             //         context.SaveChanges();
             //     }
             //
-            //     if (!context.ApiResources.Any())
+            //     if (!context.ApiResourceNames.Any())
             //     {
-            //         foreach (var resource in OidcConfig.ApiResources)
+            //         foreach (var resource in OidcConfig.ApiResourceNames)
             //         {
-            //             context.ApiResources.Add(resource.ToEntity());
+            //             context.ApiResourceNames.Add(resource.ToEntity());
             //         }
             //         context.SaveChanges();
             //     }

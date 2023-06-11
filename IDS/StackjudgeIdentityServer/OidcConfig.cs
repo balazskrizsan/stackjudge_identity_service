@@ -1,38 +1,28 @@
 using System.Collections.Generic;
-using System.Security.Claims;
-using System.Text.Json;
+using System.Linq;
 using Duende.IdentityServer;
 using Duende.IdentityServer.Models;
-using Duende.IdentityServer.Test;
-using IdentityModel;
+using StackjudgeIdentityServer.Services;
 
 namespace StackjudgeIdentityServer;
 
 public static class OidcConfig
 {
-    public const int LIFETIME_10SEC = 10;
-    public const int LIFETIME_1MIN = 60;
-    public const int LIFETIME_5MINS = 300;
-    public const int LIFETIME_1HOUR = 3600;
-    public const int LIFETIME_2HOURS = 7200;
-    public const int LIFETIME_4HOURS = 14400;
+    private const int LIFETIME_10SEC = 10;
+    private const int LIFETIME_1MIN = 60;
+    private const int LIFETIME_5MINS = 300;
+    private const int LIFETIME_1HOUR = 3600;
+    private const int LIFETIME_2HOURS = 7200;
+    private const int LIFETIME_4HOURS = 14400;
 
-    private static Dictionary<string, string> exchangeMap = new()
-    {
-        {"xc/sj.aws.s3", "sj.aws.s3"}
-    };
+    private const string CLIENT_EXCHANGE = "sj.exchange";
+    private const string CLIENT_AWS = "sj.aws";
+    private const string API_RESOURCE_AWS = "sj.resource.aws";
+    private const string CLIENT_FRONTEND = "sj.frontend";
+    private const string API_RESOURCE_FRONTEND = "sj.resource.frontend";
+    private const string CLIENT_NOTIFICATION = "sj.notification";
+    private const string CLIENT_SJ_IDS_API = "sj.ids.api";
 
-    public static bool IsValidateExchange(string exchangeFrom, string exchangeTo)
-    {
-        exchangeMap.TryGetValue(exchangeFrom, out string exchangeFromValue);
-        if (null == exchangeFromValue)
-        {
-            return false;
-        }
-
-        return exchangeFromValue == exchangeTo;
-    }
-    
     public static IEnumerable<IdentityResource> IdentityResources => new[]
     {
         new IdentityResources.OpenId(),
@@ -44,49 +34,20 @@ public static class OidcConfig
         }
     };
 
-    public static IEnumerable<ApiScope> ApiScopes => new[]
-    {
-        new ApiScope("sj"),
-        new ApiScope("sj.ids"),
-        new ApiScope("sj.ids.api"),
-        new ApiScope("sj.frontend"),
-        new ApiScope("sj.aws"),
-        new ApiScope("sj.aws.s3"),
-        new ApiScope("xc/sj.aws.s3"),
-        new ApiScope("xc/sj.aws.ses"),
-        new ApiScope("sj.aws.ec2"),
-        new ApiScope("sj.aws.ec2.upload_company_logo"),
-        new ApiScope("sj.aws.ec2.upload_company_map"),
-        new ApiScope("sj.aws.ses"),
-        new ApiScope("sj.aws.ses.send_mail"),
-        new ApiScope("sj.notification"),
-        new ApiScope("sj.notification.send_push"),
-        new ApiScope(IdentityServerConstants.LocalApi.ScopeName),
-    };
+    // public static IEnumerable<ApiScope> ApiScopes => ScopeService.GetAllScopesHasApiResource();
+    public static IEnumerable<ApiScope> ApiScopes => ScopeService.GetApiScopesHasApiResource();
 
     public static IEnumerable<ApiResource> ApiResources => new[]
     {
-        new ApiResource("sj.resource.aws")
+        new ApiResource(API_RESOURCE_AWS)
         {
-            Scopes = new List<string>
-            {
-                "sj",
-                "sj.aws",
-                "xc/sj.aws.s3",
-                "sj.aws.s3",
-            },
-            ApiSecrets = new List<Secret> { new("sj.resource.aws".Sha256()) },
+            Scopes = ScopeService.GetScopesByClientId(CLIENT_AWS),
+            ApiSecrets = new List<Secret> { new(API_RESOURCE_AWS.Sha256()) },
         },
-        new ApiResource("sj.resource.frontend")
+        new ApiResource(API_RESOURCE_FRONTEND)
         {
-            Scopes = new List<string>
-            {
-                IdentityServerConstants.StandardScopes.OpenId,
-                IdentityServerConstants.StandardScopes.Profile,
-                "sj",
-                "sj.frontend",
-            },
-            ApiSecrets = new List<Secret> { new("sj_aws_scopes".Sha256()) },
+            Scopes = ScopeService.GetScopesByClientId(CLIENT_FRONTEND),
+            ApiSecrets = new List<Secret> { new(API_RESOURCE_FRONTEND.Sha256()) },
         },
         new ApiResource("sj.resource.ids")
         {
@@ -99,111 +60,95 @@ public static class OidcConfig
                 "sj.ids",
                 "sj.ids.api",
             },
-            ApiSecrets = new List<Secret> { new("sj_aws_scopes".Sha256()) },
+            ApiSecrets = new List<Secret> { new("sj.resource.ids".Sha256()) },
         }
     };
 
-    public static IEnumerable<Client> Clients => new[]
+    private static List<Client> Clients => new()
     {
-        new Client
+        new()
         {
-            ClientId = "sj.aws",
-            ClientName = "Machine2Machine/Sj/Aws",
-            AllowAccessTokensViaBrowser = false,
+            ClientId = CLIENT_AWS,
+            ClientName = CLIENT_AWS,
             AllowedGrantTypes = GrantTypes.ClientCredentials,
-            ClientSecrets = { new Secret("sj.aws.client.secret".Sha256()) },
+            ClientSecrets = { new Secret(CLIENT_AWS.Sha256()) },
+            AllowedScopes = ScopeService.GetScopesByClientId(CLIENT_AWS),
             AccessTokenLifetime = LIFETIME_4HOURS,
-            AllowedScopes =
-            {
-                "sj",
-                "sj.aws",
-                "xc/sj.aws.s3",
-                "xc/sj.aws.ses",
-                "sj.aws.ec2",
-                "sj.aws.ec2.upload_company_logo",
-                "sj.aws.ec2.upload_company_map",
-                "sj.aws.ses",
-                "sj.aws.ses.send_mail",
-            },
+            AllowAccessTokensViaBrowser = false,
         },
-        new Client
+        new()
         {
-            ClientId = "sj.notification",
-            ClientName = "Machine2Machine/Sj/Aws",
-            AllowAccessTokensViaBrowser = false,
+            ClientId = CLIENT_NOTIFICATION,
+            ClientName = CLIENT_NOTIFICATION,
             AllowedGrantTypes = GrantTypes.ClientCredentials,
-            ClientSecrets = { new Secret("sj.notification.client.secret".Sha256()) },
-            AccessTokenLifetime = LIFETIME_4HOURS,
+            ClientSecrets = { new Secret(CLIENT_NOTIFICATION.Sha256()) },
             AllowedScopes =
             {
                 "sj",
                 "sj.notification",
                 "sj.notification.send_push",
             },
+            AllowAccessTokensViaBrowser = false,
+            AccessTokenLifetime = LIFETIME_4HOURS,
         },
-        new Client
+        new()
         {
-            ClientId = "sj.frontend",
-            ClientName = "Code/Sj/Frontend",
-            AllowAccessTokensViaBrowser = true,
+            ClientId = CLIENT_FRONTEND,
+            ClientName = CLIENT_FRONTEND,
             AllowedGrantTypes = GrantTypes.Code,
             RequireClientSecret = false,
+            AllowedScopes = ScopeService.GetScopesByClientId(CLIENT_FRONTEND),
+            AllowAccessTokensViaBrowser = true,
             RequirePkce = false, // go true
             RedirectUris = { "https://localhost:4200" },
             PostLogoutRedirectUris = { },
             AllowedCorsOrigins = { "https://localhost:4200" },
             RequireConsent = false,
             AccessTokenLifetime = LIFETIME_4HOURS,
-            AllowedScopes =
-            {
-                IdentityServerConstants.StandardScopes.OpenId,
-                IdentityServerConstants.StandardScopes.Profile,
-                "sj",
-                "sj.frontend",
-            },
             EnableLocalLogin = false,
             IdentityProviderRestrictions = { "Facebook" },
             AccessTokenType = AccessTokenType.Jwt
         },
-        new Client
+        new()
         {
-            ClientId = "sj.ids.api",
+            ClientId = CLIENT_SJ_IDS_API,
+            ClientName = CLIENT_SJ_IDS_API,
             AllowedGrantTypes = GrantTypes.ClientCredentials,
-            ClientSecrets = { new Secret("sj.ids.api.secret".Sha256()) },
+            ClientSecrets = { new Secret(CLIENT_SJ_IDS_API.Sha256()) },
             AllowOfflineAccess = true,
             RequireClientSecret = false,
-            RedirectUris = { },
-            PostLogoutRedirectUris = { },
             RequirePkce = true,
             AllowedScopes =
             {
                 IdentityServerConstants.StandardScopes.OpenId,
                 IdentityServerConstants.StandardScopes.Profile,
                 IdentityServerConstants.LocalApi.ScopeName,
+                IdentityServerConstants.LocalApi.AuthenticationScheme,
                 "sj",
                 "sj.ids",
                 "sj.ids.api",
             }
         },
-        new Client
+        new()
         {
-            ClientId = "sj.exchange",
-            AllowedGrantTypes =  new[] { "token_exchange" },
+            ClientId = CLIENT_EXCHANGE,
+            ClientName = CLIENT_EXCHANGE,
+            AllowedGrantTypes = new[] { "token_exchange" },
             ClientSecrets = { new Secret("sj.exchange".Sha256()) },
+            AllowedScopes = ScopeService.GetExchangeScopes(),
             AllowOfflineAccess = true,
             RequireClientSecret = false,
-            RedirectUris = { },
-            PostLogoutRedirectUris = { },
             RequirePkce = true,
-            AllowedScopes =
-            {
-                IdentityServerConstants.StandardScopes.OpenId,
-                IdentityServerConstants.StandardScopes.Profile,
-                IdentityServerConstants.LocalApi.ScopeName,
-                "sj",
-                "sj.aws",
-                "sj.aws.s3",
-            }
         }
     };
+
+    public static IEnumerable<Client> GetClients()
+    {
+        return Clients;
+    }
+
+    public static List<string> GetClientIds()
+    {
+        return Clients.Select(c => c.ClientId).ToList();
+    }
 }

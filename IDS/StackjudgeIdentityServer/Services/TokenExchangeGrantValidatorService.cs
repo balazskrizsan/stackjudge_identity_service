@@ -21,7 +21,7 @@ public class TokenExchangeGrantValidatorService : IExtensionGrantValidator
         _logger = logger;
     }
 
-    public string GrantType => "token-exchange";
+    public string GrantType => "token_exchange";
 
     public async Task ValidateAsync(ExtensionGrantValidationContext context)
     {
@@ -36,11 +36,11 @@ public class TokenExchangeGrantValidatorService : IExtensionGrantValidator
         _logger.LogInformation("Exchange From: " + exchangeFrom);
         _logger.LogInformation("Exchange to: " + exchangeTo);
 
-        if (!OidcConfig.IsValidateExchange(exchangeFrom, exchangeTo))
+        if (!ScopeService.IsValidExchange(exchangeFrom, exchangeTo))
         {
-            _logger.LogError("IsValidateExchange error");
+            _logger.LogError("IsValidExchange error");
             context.Result = new GrantValidationResult(TokenRequestErrors.InvalidScope);
-
+        
             return;
         }
 
@@ -61,12 +61,10 @@ public class TokenExchangeGrantValidatorService : IExtensionGrantValidator
             return;
         }
 
-        List<Claim> newClaims = new List<Claim>();
-
         Dictionary<string, object> customResponse = new Dictionary<string, object>();
         customResponse.Add("exchange_from", exchangeFrom);
         customResponse.Add("exchange_to", exchangeTo);
 
-        context.Result = new GrantValidationResult(exchangeFrom, authMethod, newClaims, "idp", customResponse);
+        context.Result = new GrantValidationResult(exchangeFrom, authMethod, new List<Claim>(), "idp", customResponse);
     }
 }

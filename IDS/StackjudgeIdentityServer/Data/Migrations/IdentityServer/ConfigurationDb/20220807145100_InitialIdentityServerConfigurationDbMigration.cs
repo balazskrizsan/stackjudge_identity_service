@@ -11,7 +11,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ApiResources",
+                name: "ApiResourceNames",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -57,7 +57,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
                 });
 
             migrationBuilder.CreateTable(
-                name: "Clients",
+                name: "ClientIds",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -172,7 +172,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
                     table.ForeignKey(
                         name: "FK_ApiResourceClaims_ApiResources_ApiResourceId",
                         column: x => x.ApiResourceId,
-                        principalTable: "ApiResources",
+                        principalTable: "ApiResourceNames",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -193,7 +193,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
                     table.ForeignKey(
                         name: "FK_ApiResourceProperties_ApiResources_ApiResourceId",
                         column: x => x.ApiResourceId,
-                        principalTable: "ApiResources",
+                        principalTable: "ApiResourceNames",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -213,7 +213,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
                     table.ForeignKey(
                         name: "FK_ApiResourceScopes_ApiResources_ApiResourceId",
                         column: x => x.ApiResourceId,
-                        principalTable: "ApiResources",
+                        principalTable: "ApiResourceNames",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -237,7 +237,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
                     table.ForeignKey(
                         name: "FK_ApiResourceSecrets_ApiResources_ApiResourceId",
                         column: x => x.ApiResourceId,
-                        principalTable: "ApiResources",
+                        principalTable: "ApiResourceNames",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -299,7 +299,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
                     table.ForeignKey(
                         name: "FK_ClientClaims_Clients_ClientId",
                         column: x => x.ClientId,
-                        principalTable: "Clients",
+                        principalTable: "ClientIds",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -319,7 +319,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
                     table.ForeignKey(
                         name: "FK_ClientCorsOrigins_Clients_ClientId",
                         column: x => x.ClientId,
-                        principalTable: "Clients",
+                        principalTable: "ClientIds",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -339,7 +339,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
                     table.ForeignKey(
                         name: "FK_ClientGrantTypes_Clients_ClientId",
                         column: x => x.ClientId,
-                        principalTable: "Clients",
+                        principalTable: "ClientIds",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -359,7 +359,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
                     table.ForeignKey(
                         name: "FK_ClientIdPRestrictions_Clients_ClientId",
                         column: x => x.ClientId,
-                        principalTable: "Clients",
+                        principalTable: "ClientIds",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -379,7 +379,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
                     table.ForeignKey(
                         name: "FK_ClientPostLogoutRedirectUris_Clients_ClientId",
                         column: x => x.ClientId,
-                        principalTable: "Clients",
+                        principalTable: "ClientIds",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -400,7 +400,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
                     table.ForeignKey(
                         name: "FK_ClientProperties_Clients_ClientId",
                         column: x => x.ClientId,
-                        principalTable: "Clients",
+                        principalTable: "ClientIds",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -420,7 +420,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
                     table.ForeignKey(
                         name: "FK_ClientRedirectUris_Clients_ClientId",
                         column: x => x.ClientId,
-                        principalTable: "Clients",
+                        principalTable: "ClientIds",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -440,7 +440,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
                     table.ForeignKey(
                         name: "FK_ClientScopes_Clients_ClientId",
                         column: x => x.ClientId,
-                        principalTable: "Clients",
+                        principalTable: "ClientIds",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -464,7 +464,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
                     table.ForeignKey(
                         name: "FK_ClientSecrets_Clients_ClientId",
                         column: x => x.ClientId,
-                        principalTable: "Clients",
+                        principalTable: "ClientIds",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -524,7 +524,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
 
             migrationBuilder.CreateIndex(
                 name: "IX_ApiResources_Name",
-                table: "ApiResources",
+                table: "ApiResourceNames",
                 column: "Name",
                 unique: true);
 
@@ -601,7 +601,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clients_ClientId",
-                table: "Clients",
+                table: "ClientIds",
                 column: "ClientId",
                 unique: true);
 
@@ -698,13 +698,13 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
                 name: "IdentityResourceProperties");
 
             migrationBuilder.DropTable(
-                name: "ApiResources");
+                name: "ApiResourceNames");
 
             migrationBuilder.DropTable(
                 name: "ApiScopes");
 
             migrationBuilder.DropTable(
-                name: "Clients");
+                name: "ClientIds");
 
             migrationBuilder.DropTable(
                 name: "IdentityResources");

@@ -29,7 +29,7 @@ public class GetAction
         {
             Data = new GetResponse
             {
-                ExtendedUsers = appDbContext.ExtendedUsers
+                IdsUser = appDbContext.ExtendedUsers
                     .Where(user => user.UserId == userId)
                     .Join(appDbContext.Users,
                         eu => eu.UserId,

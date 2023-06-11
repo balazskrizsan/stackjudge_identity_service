@@ -73,7 +73,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("ApiResources", (string)null);
+                    b.ToTable("ApiResourceNames", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiResourceClaim", b =>
@@ -462,7 +462,7 @@ namespace StackjudgeIdentityServer.Data.Migrations.IdentityServer.ConfigurationD
                     b.HasIndex("ClientId")
                         .IsUnique();
 
-                    b.ToTable("Clients", (string)null);
+                    b.ToTable("ClientIds", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientClaim", b =>
