@@ -61,9 +61,8 @@ public class AccountService : IAccountService
         var externalId = principal.FindFirst(JwtClaimTypes.Id)?.Value;
         var accessToken = principal.FindFirst(JwtClaimTypes.AccessTokenHash)?.Value;
         var username = principal.FindFirst(ClaimTypes.Name)?.Value;
-        username = Regex.Replace(username, "[^a-zA-Z]", "");
 
-        var user = new IdentityUser(username);
+        var user = new IdentityUser(CleanUserName(username));
         var createResult = await userManager.CreateAsync(user);
 
         // @todo: add back
@@ -89,5 +88,27 @@ public class AccountService : IAccountService
             returnUrl
         );
         // return Redirect(returnUrl);
+    }
+
+    private string CleanUserName(string original)
+    {
+        original = original.Replace("á", "a");
+        original = original.Replace("Á", "A");
+        original = original.Replace("é", "e");
+        original = original.Replace("É", "E");
+        original = original.Replace("ú", "u");
+        original = original.Replace("Ú", "U");
+        original = original.Replace("ő", "o");
+        original = original.Replace("Ő", "O");
+        original = original.Replace("ó", "o");
+        original = original.Replace("Ó", "O");
+        original = original.Replace("ü", "u");
+        original = original.Replace("Ü", "U");
+        original = original.Replace("ö", "o");
+        original = original.Replace("Ö", "O");
+        original = original.Replace("í", "i");
+        original = original.Replace("Í", "I");
+
+        return Regex.Replace(original, "[^a-zA-Z]", "");
     }
 }
