@@ -78,6 +78,6 @@ public static class AppConfigService
 
     private static string GetConnectionString()
     {
-        return AppSettingsService.Get()["psqlConnectionString"];
+        return AppSettingsService.Get()["PsqlConnectionString"];
     }
 }

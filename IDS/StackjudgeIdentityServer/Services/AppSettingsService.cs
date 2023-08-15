@@ -14,17 +14,22 @@ public static class AppSettingsService
             return settings;
         }
 
+        var settingsBuilder = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json")
+            .AddEnvironmentVariables();
+
         var env = Environment.GetEnvironmentVariable("env");
 
-        var customEnv = $"appsettings.{env}.json";
+        if (null != env)
+        {
+            var customEnv = $"appsettings.{env}.json";
 
-        Console.WriteLine($"Loading custom environment variables: {customEnv}");
+            Console.WriteLine($"Loading custom environment variables: {customEnv}");
 
-        settings = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json")
-            .AddJsonFile(customEnv)
-            .AddEnvironmentVariables()
-            .Build();
+            settingsBuilder.AddJsonFile(customEnv);
+        }
+
+        settings = settingsBuilder.Build();
 
         return settings;
     }
