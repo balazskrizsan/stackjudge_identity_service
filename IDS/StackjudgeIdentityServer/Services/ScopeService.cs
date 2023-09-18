@@ -46,6 +46,11 @@ public static class ScopeService
             new List<string> { "sj.ids.api" },
             new List<string> { "sj.ids.api" },
             new List<string>()),
+        new(
+            "sj.ids.api",
+            new List<string> { "sj.ids.api" },
+            new List<string> { "sj.ids.api" },
+            new List<string>()),
         // Frontend
         new(
             "sj.frontend",
@@ -56,6 +61,11 @@ public static class ScopeService
         new(
             "xc/sj.aws",
             new List<string> { "sj.aws" },
+            new List<string> { "sj.aws" },
+            new List<string> { "sj.aws" }
+        ),
+        new(
+            "sj.aws.ec2",
             new List<string> { "sj.aws" },
             new List<string> { "sj.aws" }
         )
