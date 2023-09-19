@@ -107,7 +107,9 @@ public static class OidcConfig
             AccessTokenLifetime = LIFETIME_4HOURS,
             EnableLocalLogin = false,
             IdentityProviderRestrictions = { "Facebook" },
-            AccessTokenType = AccessTokenType.Jwt
+            AccessTokenType = AccessTokenType.Jwt,
+            RefreshTokenUsage = TokenUsage.ReUse,
+            AllowOfflineAccess = true
         },
         new()
         {

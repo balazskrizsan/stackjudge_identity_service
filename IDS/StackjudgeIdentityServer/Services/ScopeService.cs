@@ -27,6 +27,11 @@ public static class ScopeService
             new List<string> { },
             new List<string>()),
         new(
+            IdentityServerConstants.StandardScopes.OfflineAccess,
+            new List<string> { "sj.frontend" },
+            new List<string> { },
+            new List<string>()),
+        new(
             "sj",
             new List<string> { "sj.frontend" },
             new List<string> { "sj.frontend" },
